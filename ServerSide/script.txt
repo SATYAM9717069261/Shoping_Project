@@ -1,0 +1,28 @@
+create database shoppingsite
+
+create table dbo.ownerdetail(
+UserId bigint primary key Identity(1,1) not null,
+Username varchar(20) not null,
+Password varchar(max) not null,
+CreatedOn datetime not null,
+ModifyOn datetime not null,
+IsActive bit not null,
+IsDelete bit not null
+)
+select * from dbo.ownerdetail
+insert into dbo.ownerdetail (Username,Password,CreatedOn,ModifyOn,IsActive,IsDelete) values('Satyam','sdsdlsjdlsdjlsdj',GETDATE(),GETDATE(),1,0)
+insert into dbo.ownerdetail (Username,Password,CreatedOn,ModifyOn,IsActive,IsDelete) values('Sam','sdsdlsjdlsdjlsdjsasas',GETDATE(),GETDATE(),1,0)
+
+create table dbo.Productdetails(
+UserId bigint primary key ,
+ProductId bigint Identity(1,1),
+ProductName varchar(100),
+Price bigint,
+Quantity bigint,
+ImageUrl varchar(max),
+IsActive bit not null,
+IsDelete bit not null,
+)
+
+alter table dbo.Productdetails add Constraint FK_ownerdetail_Productdetails FOREIGN KEY(UserId)
+references dbo.ownerdetail(UserId)
