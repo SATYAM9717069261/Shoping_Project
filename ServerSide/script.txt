@@ -26,3 +26,10 @@ IsDelete bit not null,
 
 alter table dbo.Productdetails add Constraint FK_ownerdetail_Productdetails FOREIGN KEY(UserId)
 references dbo.ownerdetail(UserId)
+
+
+alter table dbo.Productdetails add Rating bigint default 0
+
+alter table dbo.Productdetails add CreatedOn date
+
+alter table dbo.Productdetails add Modifyon date

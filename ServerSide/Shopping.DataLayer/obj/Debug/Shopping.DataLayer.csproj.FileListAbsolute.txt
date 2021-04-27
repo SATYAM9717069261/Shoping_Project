@@ -1,0 +1,12 @@
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.DataLayer\bin\Debug\Shopping.DataLayer.dll.config
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.DataLayer\bin\Debug\Shopping.DataLayer.dll
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.DataLayer\bin\Debug\Shopping.DataLayer.pdb
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.DataLayer\bin\Debug\EntityFramework.dll
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.DataLayer\bin\Debug\EntityFramework.xml
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.DataLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.DataLayer\obj\Debug\Shopping.DataLayer.csprojAssemblyReference.cache
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.DataLayer\obj\Debug\Shopping.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.DataLayer\obj\Debug\Shopping.DataLayer.csproj.CopyComplete
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.DataLayer\obj\Debug\Shopping.DataLayer.dll
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.DataLayer\obj\Debug\Shopping.DataLayer.pdb
