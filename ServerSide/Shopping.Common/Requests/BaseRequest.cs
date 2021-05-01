@@ -6,6 +6,6 @@ namespace Shopping.Common.Requests
 {
     public class BaseRequest
     {
-        public long UserId { get; set; }
+        public long? UserId { get; set; }
     }
 }

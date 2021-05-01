@@ -1,0 +1,47 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Shopping.BLayer/1.0.0": {
+        "dependencies": {
+          "Shopping.Common": "1.0.0",
+          "Shopping.DataLayer": "1.0.0"
+        },
+        "runtime": {
+          "Shopping.BLayer.dll": {}
+        }
+      },
+      "Shopping.Common/1.0.0": {
+        "runtime": {
+          "Shopping.Common.dll": {}
+        }
+      },
+      "Shopping.DataLayer/1.0.0": {
+        "runtime": {
+          "Shopping.DataLayer.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Shopping.BLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Shopping.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Shopping.DataLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

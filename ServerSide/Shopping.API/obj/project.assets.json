@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "AWSSDK.Core/3.7.0.16": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -2582,6 +2591,20 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "Shopping.BLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Shopping.Common": "1.0.0",
+          "Shopping.DataLayer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Shopping.BLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shopping.BLayer.dll": {}
+        }
+      },
       "Shopping.Common/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -2591,10 +2614,45 @@
         "runtime": {
           "bin/placeholder/Shopping.Common.dll": {}
         }
+      },
+      "Shopping.DataLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Shopping.DataLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shopping.DataLayer.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "AWSSDK.Core/3.7.0.16": {
+      "sha512": "DFAoGy2fDrt9Il4hHEueoc/vm825RlXGTbsF7Cu2TnJ8apSVCs0+qnF8RJDouQYTC6QcOVU4pSltdCYoRGy5xw==",
+      "type": "package",
+      "path": "awssdk.core/3.7.0.16",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "awssdk.core.3.7.0.16.nupkg.sha512",
+        "awssdk.core.nuspec",
+        "lib/net35/AWSSDK.Core.dll",
+        "lib/net35/AWSSDK.Core.pdb",
+        "lib/net35/AWSSDK.Core.xml",
+        "lib/net45/AWSSDK.Core.dll",
+        "lib/net45/AWSSDK.Core.pdb",
+        "lib/net45/AWSSDK.Core.xml",
+        "lib/netcoreapp3.1/AWSSDK.Core.dll",
+        "lib/netcoreapp3.1/AWSSDK.Core.pdb",
+        "lib/netcoreapp3.1/AWSSDK.Core.xml",
+        "lib/netstandard2.0/AWSSDK.Core.dll",
+        "lib/netstandard2.0/AWSSDK.Core.pdb",
+        "lib/netstandard2.0/AWSSDK.Core.xml",
+        "tools/account-management.ps1"
+      ]
+    },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "sha512": "Y4rs5aMEXY8G7wJo5S3EEt6ltqyOTr/qOeZzfn+hw/fuQj5GppGckMY5psGLETo1U9hcT5MmAhaT5xtusM1b5g==",
       "type": "package",
@@ -8561,19 +8619,30 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "Shopping.BLayer/1.0.0": {
+      "type": "project",
+      "path": "../ClassLibrary1/Shopping.BLayer.csproj",
+      "msbuildProject": "../ClassLibrary1/Shopping.BLayer.csproj"
+    },
     "Shopping.Common/1.0.0": {
       "type": "project",
       "path": "../Shopping.Common/Shopping.Common.csproj",
       "msbuildProject": "../Shopping.Common/Shopping.Common.csproj"
+    },
+    "Shopping.DataLayer/1.0.0": {
+      "type": "project",
+      "path": "../ClassLibrary2/Shopping.DataLayer.csproj",
+      "msbuildProject": "../ClassLibrary2/Shopping.DataLayer.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "AWSSDK.Core >= 3.7.0.16",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.13",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.13",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.13",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.5",
-      "Shopping.Common >= 1.0.0"
+      "Shopping.BLayer >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -8582,11 +8651,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\91971\\source\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.API\\Shopping.API.csproj",
+      "projectUniqueName": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.API\\Shopping.API.csproj",
       "projectName": "Shopping.API",
-      "projectPath": "C:\\Users\\91971\\source\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.API\\Shopping.API.csproj",
+      "projectPath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.API\\Shopping.API.csproj",
       "packagesPath": "C:\\Users\\91971\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\91971\\source\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.API\\obj\\",
+      "outputPath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\91971\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8603,8 +8672,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\91971\\source\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.Common\\Shopping.Common.csproj": {
-              "projectPath": "C:\\Users\\91971\\source\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.Common\\Shopping.Common.csproj"
+            "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\ClassLibrary1\\Shopping.BLayer.csproj": {
+              "projectPath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\ClassLibrary1\\Shopping.BLayer.csproj"
             }
           }
         }
@@ -8619,6 +8688,10 @@
       "netcoreapp3.1": {
         "targetAlias": "netcoreapp3.1",
         "dependencies": {
+          "AWSSDK.Core": {
+            "target": "Package",
+            "version": "[3.7.0.16, )"
+          },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[3.1.13, )"

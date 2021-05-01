@@ -10,5 +10,7 @@ namespace Shopping.Common.Responses
         public bool? IsDelete { get; set; }
         public DateTime? CreatedOn { get; set; }
         public DateTime? ModifyOn { get; set; }
+
+        public bool? Sucess { get; set; }// represent sucessfully store data in database
     }
 }

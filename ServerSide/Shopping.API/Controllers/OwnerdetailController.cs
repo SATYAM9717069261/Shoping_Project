@@ -1,22 +1,33 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Amazon.Runtime.Internal;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Shopping.BLayer.Adapters;
 using Shopping.Common.Requests;
 using Shopping.Common.Responses;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Shopping.API.Controllers
 {
+    [Route("api/Ownerdetail")]
     public class OwnerdetailController : Controller
     {
-        private OwnerdetailsResponse response;
-        public async Task<ActionResult> AddUser([FromBody] AdddetailsRequest request)
+        [Route("Adddetails")]
+        [HttpPost]
+        public async Task<IActionResult> AddOwner([FromBody] AdddetailsRequest request)
         {
-            response = new OwnerdetailsResponse();
-            
-            return Ok(response);
+            try
+            {
+                OwnerdetailsAdapter ad = new OwnerdetailsAdapter();
+                OwnerdetailsResponse response = new OwnerdetailsResponse();
+                response = await ad.savedetails(request);
+                return Ok(response);
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+           
         }
     }
 }

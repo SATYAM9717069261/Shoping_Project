@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "3zQefr8qUQvCfB2DCbOmu1TIsA/lEfsP0/YYO+vK3Mq/8ttyr22aYfo+O0aZRSNkG+7PclK0SFXOnocAOZWMfA==",
+  "dgSpecHash": "/2cb/S/Av91sBHRxxD+pbcM9zEXuw+oVqq+St56iT49i75sc8K4tBHC3xlob/2ETiQ17PlnU9gpU1IWxkKOjRA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\91971\\source\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.API\\Shopping.API.csproj",
+  "projectFilePath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.API\\Shopping.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\91971\\.nuget\\packages\\awssdk.core\\3.7.0.16\\awssdk.core.3.7.0.16.nupkg.sha512",
     "C:\\Users\\91971\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\91971\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\91971\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",

@@ -7,6 +7,6 @@ namespace Shopping.Common.Responses
     public class OwnerdetailsResponse : BaseResponse
     {
         public long UserId { get; set; }
-        public bool IsExist { get; set; }
+        public string Username { get; set; }
     }
 }

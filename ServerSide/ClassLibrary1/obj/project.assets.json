@@ -1,0 +1,109 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Shopping.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Shopping.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shopping.Common.dll": {}
+        }
+      },
+      "Shopping.DataLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Shopping.DataLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shopping.DataLayer.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Shopping.Common/1.0.0": {
+      "type": "project",
+      "path": "../Shopping.Common/Shopping.Common.csproj",
+      "msbuildProject": "../Shopping.Common/Shopping.Common.csproj"
+    },
+    "Shopping.DataLayer/1.0.0": {
+      "type": "project",
+      "path": "../ClassLibrary2/Shopping.DataLayer.csproj",
+      "msbuildProject": "../ClassLibrary2/Shopping.DataLayer.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "Shopping.Common >= 1.0.0",
+      "Shopping.DataLayer >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\91971\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\ClassLibrary1\\Shopping.BLayer.csproj",
+      "projectName": "Shopping.BLayer",
+      "projectPath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\ClassLibrary1\\Shopping.BLayer.csproj",
+      "packagesPath": "C:\\Users\\91971\\.nuget\\packages\\",
+      "outputPath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\ClassLibrary1\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\91971\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "projectReferences": {
+            "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\ClassLibrary2\\Shopping.DataLayer.csproj": {
+              "projectPath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\ClassLibrary2\\Shopping.DataLayer.csproj"
+            },
+            "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.Common\\Shopping.Common.csproj": {
+              "projectPath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.Common\\Shopping.Common.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

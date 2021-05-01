@@ -23,7 +23,7 @@
     "warningsAsErrors": false,
     "optimize": false,
     "keyFile": "",
-    "emitEntryPoint": false,
+    "emitEntryPoint": true,
     "xmlDoc": false,
     "debugType": "portable"
   },
@@ -31,10 +31,12 @@
     ".NETCoreApp,Version=v3.1": {
       "Shopping.API/1.0.0": {
         "dependencies": {
+          "AWSSDK.Core": "3.7.0.16",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.13",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.13",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.10.13",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.5",
+          "Shopping.BLayer": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -310,6 +312,17 @@
         },
         "compile": {
           "Shopping.API.dll": {}
+        }
+      },
+      "AWSSDK.Core/3.7.0.16": {
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.0.16"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {}
         }
       },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
@@ -2207,6 +2220,34 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
+      "Shopping.BLayer/1.0.0": {
+        "dependencies": {
+          "Shopping.Common": "1.0.0",
+          "Shopping.DataLayer": "1.0.0"
+        },
+        "runtime": {
+          "Shopping.BLayer.dll": {}
+        },
+        "compile": {
+          "Shopping.BLayer.dll": {}
+        }
+      },
+      "Shopping.Common/1.0.0": {
+        "runtime": {
+          "Shopping.Common.dll": {}
+        },
+        "compile": {
+          "Shopping.Common.dll": {}
+        }
+      },
+      "Shopping.DataLayer/1.0.0": {
+        "runtime": {
+          "Shopping.DataLayer.dll": {}
+        },
+        "compile": {
+          "Shopping.DataLayer.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Antiforgery.dll": {}
@@ -3829,6 +3870,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "AWSSDK.Core/3.7.0.16": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DFAoGy2fDrt9Il4hHEueoc/vm825RlXGTbsF7Cu2TnJ8apSVCs0+qnF8RJDouQYTC6QcOVU4pSltdCYoRGy5xw==",
+      "path": "awssdk.core/3.7.0.16",
+      "hashPath": "awssdk.core.3.7.0.16.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -4948,6 +4996,21 @@
       "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "Shopping.BLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Shopping.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Shopping.DataLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
       "type": "referenceassembly",

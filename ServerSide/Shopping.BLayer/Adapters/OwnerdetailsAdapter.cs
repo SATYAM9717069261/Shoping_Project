@@ -46,7 +46,7 @@ namespace Shopping.BLayer.Adapters
             throw new NotImplementedException();
         }
 
-        public Ownerdetails savedetails(Ownerdetails data)
+        public Ownerdetails savedetails(AdddetailsRequest data)
         {
             details = new Ownerdetails()
             {

@@ -47,10 +47,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Shopping.Common\Shopping.Common.csproj">
+      <Project>{be11b94f-5044-4d8d-9afb-0d4d4ecbf278}</Project>
+      <Name>Shopping.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shopping.DataLayer\Shopping.DataLayer.csproj">
       <Project>{AEA63958-C0CF-4EEA-AD9C-105CD927B1E9}</Project>
       <Name>Shopping.DataLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

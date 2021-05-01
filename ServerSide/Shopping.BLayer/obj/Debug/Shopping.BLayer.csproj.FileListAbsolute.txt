@@ -4,3 +4,7 @@ C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping
 C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.BLayer\obj\Debug\Shopping.BLayer.csproj.CoreCompileInputs.cache
 C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.BLayer\obj\Debug\Shopping.BLayer.dll
 C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.BLayer\obj\Debug\Shopping.BLayer.pdb
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.BLayer\bin\Debug\Shopping.DataLayer.dll
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.BLayer\bin\Debug\Shopping.DataLayer.pdb
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.BLayer\bin\Debug\Shopping.DataLayer.dll.config
+C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.BLayer\obj\Debug\Shopping.BLayer.csproj.CopyComplete
