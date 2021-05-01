@@ -7,12 +7,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shopping.DataLayer.AutoMapperStructure;
+using AutoMapper;
 
 namespace Shopping.BLayer.Adapters
 {
     public class OwnerdetailsAdapter : IOwnerdetails
     {
         private Ownerdetails details;
+        private IMapper custommapper;
+
+        public OwnerdetailsAdapter(IMapper Shoppingmapper)
+        {
+            custommapper = Shoppingmapper;
+        }
+
         public Ownerdetails activeuserbyid(int id)
         {
             throw new NotImplementedException();
@@ -52,11 +61,11 @@ namespace Shopping.BLayer.Adapters
         {
             details = new Ownerdetails();
             OwnerdetailsResponse response = new OwnerdetailsResponse();
-            details.Username = data.UserName;
-            details.CreatedOn = DateTime.UtcNow;
-            details.IsActive = true;
-            details.IsDelete = false;
-            details.ModifyOn = DateTime.UtcNow;
+            details = custommapper.Map<AdddetailsRequest, Ownerdetails>(data);
+            //use details for store data 
+
+            response = custommapper.Map<Ownerdetails, OwnerdetailsResponse>(details);
+
             response.Sucess = true;
             return response;
             

@@ -46,6 +46,12 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -88,7 +94,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.Common\\Shopping.Common.csproj": {
+                "projectPath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.Common\\Shopping.Common.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -100,6 +110,12 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -145,6 +161,9 @@
             "projectReferences": {
               "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\ClassLibrary1\\Shopping.BLayer.csproj": {
                 "projectPath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\ClassLibrary1\\Shopping.BLayer.csproj"
+              },
+              "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\ClassLibrary2\\Shopping.DataLayer.csproj": {
+                "projectPath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\ClassLibrary2\\Shopping.DataLayer.csproj"
               }
             }
           }
@@ -161,17 +180,21 @@
           "dependencies": {
             "AWSSDK.Core": {
               "target": "Package",
-              "version": "[3.7.0.16, )"
+              "version": "[3.7.0.17, )"
+            },
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.13, )"
+              "version": "[5.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.13, )"
+              "version": "[5.0.5, )"
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
@@ -239,6 +262,12 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

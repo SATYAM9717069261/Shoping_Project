@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "kLNgky/9WovlKJKNZASAXvoY2pQ3CGpH0nkDv+Jce5BsWShNbN44K0474STFS5lcDu9kytQ5YSv6Vgz1G+pAAA==",
+  "dgSpecHash": "Ig3wDgBEgyJYcmHYi2Gt9/VfAoDG6qv33HJYXtu4zYeF1BRSK2tommSWxWTkiX+B6KAolFP25/XglRgCWq/+AQ==",
   "success": true,
   "projectFilePath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\ClassLibrary2\\Shopping.DataLayer.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\91971\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\91971\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\91971\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }

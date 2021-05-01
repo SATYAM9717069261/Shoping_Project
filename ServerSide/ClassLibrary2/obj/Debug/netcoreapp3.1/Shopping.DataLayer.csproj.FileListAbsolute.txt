@@ -10,9 +10,12 @@ C:\Users\91971\source\repos\SATYAM9717069261\Shoping_Project\ServerSide\ClassLib
 D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\ClassLibrary2\bin\Debug\netcoreapp3.1\Shopping.DataLayer.deps.json
 D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\ClassLibrary2\bin\Debug\netcoreapp3.1\Shopping.DataLayer.dll
 D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\ClassLibrary2\bin\Debug\netcoreapp3.1\Shopping.DataLayer.pdb
+D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\ClassLibrary2\bin\Debug\netcoreapp3.1\Shopping.Common.dll
+D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\ClassLibrary2\bin\Debug\netcoreapp3.1\Shopping.Common.pdb
 D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\ClassLibrary2\obj\Debug\netcoreapp3.1\Shopping.DataLayer.csprojAssemblyReference.cache
 D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\ClassLibrary2\obj\Debug\netcoreapp3.1\Shopping.DataLayer.AssemblyInfoInputs.cache
 D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\ClassLibrary2\obj\Debug\netcoreapp3.1\Shopping.DataLayer.AssemblyInfo.cs
 D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\ClassLibrary2\obj\Debug\netcoreapp3.1\Shopping.DataLayer.csproj.CoreCompileInputs.cache
+D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\ClassLibrary2\obj\Debug\netcoreapp3.1\Shopping.DataLayer.csproj.CopyComplete
 D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\ClassLibrary2\obj\Debug\netcoreapp3.1\Shopping.DataLayer.dll
 D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\ClassLibrary2\obj\Debug\netcoreapp3.1\Shopping.DataLayer.pdb

@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ClassLibrary2\Shopping.DataLayer.csproj" />
     <ProjectReference Include="..\Shopping.Common\Shopping.Common.csproj" />
   </ItemGroup>
