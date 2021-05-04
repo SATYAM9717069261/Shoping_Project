@@ -1,4 +1,5 @@
-﻿using Shopping.Common.Requests;
+﻿using Shopping.Common.Filters;
+using Shopping.Common.Requests;
 using Shopping.Common.Responses;
 using Shopping.DataLayer.Models;
 using System.Collections.Generic;
@@ -8,14 +9,12 @@ namespace Shopping.DataLayer.Interfaces
 {
     interface IOwnerdetails
     {
-        Task<OwnerdetailsResponse> savedetails(AdddetailsRequest data); //0 for error 1 for sucessfull
-        Ownerdetails getdetails(int id);
-        Ownerdetails updatedetailsbyid(int id);
-        Ownerdetails disablebyid(int id);// delete user
-        Ownerdetails activeuserbyid(int id); // activate users
-        List<Ownerdetails> activeuserlist(); //get all active user
-        List<Ownerdetails> disableduserlist(); //get all disable user
-        Ownerdetails getdetailswithfilters(AdddetailsRequest filterdetails);// get details (filter)
-        List<Ownerdetails> getlistdetailswithfilters(AdddetailsRequest filterdetails); // get list of details on filter bases
+        Task<OwnerdetailsResponse> savedetails(AdddetailsRequest data, string filter); //0 for error 1 for sucessfull
+        Task<OwnerdetailsResponse> getdetailbyId(int id, string filter);
+        Task<OwnerdetailsResponse> updatedetailsbyid(ModifyRequest data, string filter);
+        Task<OwnerdetailsResponse> disablebyid(int id, string filter);// delete user
+        Task<OwnerdetailsResponse> activeuserbyid(int id, string filter); // activate users
+        Task<List<OwnerdetailsResponse>> activeuserlist(string filter); //get all active user
+        Task<List<OwnerdetailsResponse>> disableduserlist(string filter); //get all disable user
     }
 }

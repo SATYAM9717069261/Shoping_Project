@@ -8,5 +8,10 @@ namespace Shopping.Common.Responses
     {
         public long UserId { get; set; }
         public string Username { get; set; }
+
+        public static implicit operator OwnerdetailsResponse(List<OwnerdetailsResponse> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

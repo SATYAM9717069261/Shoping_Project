@@ -12,6 +12,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Shopping.DataLayer.AutoMapperStructure;
+using Microsoft.EntityFrameworkCore;
+using Shopping.DataLayer.Models;
 
 namespace Shopping.API
 {
@@ -21,6 +23,7 @@ namespace Shopping.API
         public Startup(IConfiguration configuration,IWebHostEnvironment webHostEnvironment)
         {
             _config = configuration;
+            
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -31,6 +34,10 @@ namespace Shopping.API
                 mc.AddProfile(new Automap());
             });
             IMapper mapper = mapperConfig.CreateMapper();
+
+            services.AddDbContextPool<AppDbContext>(
+                options => options.UseSqlServer(_config.GetConnectionString("ShoppingSitedb"))
+                );
             services.AddSingleton(mapper);
         }
 

@@ -14,6 +14,7 @@ namespace Shopping.DataLayer.AutoMapperStructure
         {
             CreateMap<AdddetailsRequest, Ownerdetails>();
             CreateMap<Ownerdetails, OwnerdetailsResponse>();
+            CreateMap<ModifyRequest, Ownerdetails>();
         }
        
     }
