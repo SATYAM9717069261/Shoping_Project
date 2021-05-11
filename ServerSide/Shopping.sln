@@ -12,13 +12,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServerSide", "ServerSide", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{89E8F2F1-4B58-4511-AB49-F689B1159D06}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientSide", "ClientSide", "{E9CF915C-8965-46BE-A488-FB948287C947}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.Common", "Shopping.Common\Shopping.Common.csproj", "{BE11B94F-5044-4D8D-9AFB-0D4D4ECBF278}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.BLayer", "ClassLibrary1\Shopping.BLayer.csproj", "{F2F5AFF1-E585-43CE-99DC-478EAB13216F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.BLayer", "ClassLibrary1\Shopping.BLayer.csproj", "{F2F5AFF1-E585-43CE-99DC-478EAB13216F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.DataLayer", "ClassLibrary2\Shopping.DataLayer.csproj", "{88B0BB33-35C6-45CF-A1CD-573992BA443F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.DataLayer", "ClassLibrary2\Shopping.DataLayer.csproj", "{88B0BB33-35C6-45CF-A1CD-573992BA443F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

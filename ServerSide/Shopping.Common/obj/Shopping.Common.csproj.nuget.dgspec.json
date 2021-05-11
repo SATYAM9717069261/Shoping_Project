@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.Common\\Shopping.Common.csproj": {}
+    "D:\\Shopping_site\\repos\\SATYAM9717069261\\Project\\ServerSide\\Shopping.Common\\Shopping.Common.csproj": {}
   },
   "projects": {
-    "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.Common\\Shopping.Common.csproj": {
+    "D:\\Shopping_site\\repos\\SATYAM9717069261\\Project\\ServerSide\\Shopping.Common\\Shopping.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.Common\\Shopping.Common.csproj",
+        "projectUniqueName": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Project\\ServerSide\\Shopping.Common\\Shopping.Common.csproj",
         "projectName": "Shopping.Common",
-        "projectPath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.Common\\Shopping.Common.csproj",
+        "projectPath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Project\\ServerSide\\Shopping.Common\\Shopping.Common.csproj",
         "packagesPath": "C:\\Users\\91971\\.nuget\\packages\\",
-        "outputPath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.Common\\obj\\",
+        "outputPath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Project\\ServerSide\\Shopping.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\91971\\AppData\\Roaming\\NuGet\\NuGet.Config",

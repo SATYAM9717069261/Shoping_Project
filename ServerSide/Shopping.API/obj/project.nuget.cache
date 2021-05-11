@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "odVs6VvAVILjs3c1VBClN2+sUH4q66hIJHFJJNv/oaVYi0CevNT96ITnWtrHy8gJBwvPR4gneT5zixhHfjJMYQ==",
+  "dgSpecHash": "CjDHq0mT52XhA3pWikg667NL2U5nRuY5MzxQqNJpB/qEXy7x/g2gp7X4dWRG2oYwBdY+9cdIjMV0Wwj4oiLoOw==",
   "success": true,
-  "projectFilePath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\Shopping.API\\Shopping.API.csproj",
+  "projectFilePath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Project\\ServerSide\\Shopping.API\\Shopping.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\91971\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\91971\\.nuget\\packages\\awssdk.core\\3.7.0.17\\awssdk.core.3.7.0.17.nupkg.sha512",

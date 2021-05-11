@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KbSIPTqLXR3xHwCbwCh0l5moo+wB0rKzUjOY7efeVJCVUml0CVqy1V4TjeZytylgWYccP/nZXpujec0HDKTeRA==",
+  "dgSpecHash": "ZbmrL1KXhSKHiibflPk+rvwKILqAp6iPdhVuVVhJ7A/dCkO/ql9JhkvrD/pVWEqNm6e1g1QMnVf4Oj6F0M17BA==",
   "success": true,
-  "projectFilePath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Shoping_Project\\ServerSide\\ClassLibrary1\\Shopping.BLayer.csproj",
+  "projectFilePath": "D:\\Shopping_site\\repos\\SATYAM9717069261\\Project\\ServerSide\\ClassLibrary1\\Shopping.BLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\91971\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\91971\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

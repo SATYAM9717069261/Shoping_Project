@@ -30,7 +30,7 @@ namespace Shopping.BLayer.Adapters
         {
             details = new Ownerdetails();
             OwnerdetailsResponse response = new OwnerdetailsResponse();
-            details =(from a in dbconnection.Ownerdetails where a.UserId == id select a).FirstOrDefault();
+            details =await (from a in dbconnection.Ownerdetails where a.UserId == id select a).FirstOrDefaultAsync();
             if (details != null) {
                 details.IsActive = true;
                 details.IsDelete = false;
@@ -47,16 +47,7 @@ namespace Shopping.BLayer.Adapters
             details = new Ownerdetails();
             List<OwnerdetailsResponse> response = new List<OwnerdetailsResponse>();
             var data= await (from a in dbconnection.Ownerdetails where a.IsActive == true select a).ToListAsync();
-            for(int i=0;i<data.Count;i++)
-            {
-                var mid_data = data[i];
-                //for (var j = 0; j <mid_data; j++)
-                //{
-
-                //}
-            }
-            //data = data.Where(s => s.Name.Contains(filter) );
-            if (data != null) response = custommapper.Map<List<OwnerdetailsResponse>>(data);
+            if (data.Count != 0) response = custommapper.Map<List<OwnerdetailsResponse>>(data);
             else throw new CustomException("data Not Found !");
             return response;
         }
@@ -65,7 +56,7 @@ namespace Shopping.BLayer.Adapters
         {
             details = new Ownerdetails();
             OwnerdetailsResponse response = new OwnerdetailsResponse();
-            details = (from a in dbconnection.Ownerdetails where a.UserId == id select a).FirstOrDefault();
+            details =await (from a in dbconnection.Ownerdetails where a.UserId == id select a).FirstOrDefaultAsync();
             if (details != null)
             {
                 details.IsActive = false;
@@ -82,9 +73,8 @@ namespace Shopping.BLayer.Adapters
         {
             details = new Ownerdetails();
             List<OwnerdetailsResponse> response = new List<OwnerdetailsResponse>();
-            var data =await (from a in dbconnection.Ownerdetails where a.IsDelete == true select a).ToListAsync();
-
-            if (data != null) response = custommapper.Map<List<OwnerdetailsResponse>>(data);
+            var data = await (from a in dbconnection.Ownerdetails where a.IsDelete == true select a).ToListAsync();
+            if (data.Count!=0) response = custommapper.Map<List<OwnerdetailsResponse>>(data);
             else throw new CustomException("data Not Found !");
             return response;
         }
@@ -92,10 +82,10 @@ namespace Shopping.BLayer.Adapters
         public async Task<OwnerdetailsResponse> getdetailbyId(int id, string filter)
         {
             details = new Ownerdetails();
-            List<OwnerdetailsResponse> response = new List<OwnerdetailsResponse>();
-            var data = await (from a in dbconnection.Ownerdetails select a).ToListAsync();
+            OwnerdetailsResponse response = new OwnerdetailsResponse();
+            details = await (from a in dbconnection.Ownerdetails where  a.UserId==id select a).FirstOrDefaultAsync();
 
-            if (data != null) response = custommapper.Map<List<OwnerdetailsResponse>>(data);
+            if (details != null) response = custommapper.Map<Ownerdetails,OwnerdetailsResponse>(details);
             else throw new CustomException("data Not Found !");
             return response;
         }
@@ -123,6 +113,7 @@ namespace Shopping.BLayer.Adapters
             OwnerdetailsResponse response = new OwnerdetailsResponse();
             details = await(from a in dbconnection.Ownerdetails where a.UserId == data.UserId select a).FirstOrDefaultAsync();
             if(details != null){
+                //details = custommapper.Map<ModifyRequest,Ownerdetails>(data);
                 details.Username = data.UserName;
                 details.Password = data.Password;
                 details.ModifyOn = DateTime.UtcNow;
@@ -131,7 +122,7 @@ namespace Shopping.BLayer.Adapters
                 var row = await dbconnection.SaveChangesAsync();
                 response = custommapper.Map<Ownerdetails, OwnerdetailsResponse>(details);
                 response.Sucess = row > 0;
-            }else throw new CustomException("Id is not Correct !");
+            }else throw new CustomException("detail !");
             return response;
         }
 

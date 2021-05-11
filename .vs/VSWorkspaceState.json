@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\ClientSide",
+    "\\ClientSide\\Owner_Site",
+    "\\ClientSide\\Owner_Site\\ClientApp",
     "\\ServerSide"
   ],
-  "SelectedNode": "\\ServerSide",
+  "SelectedNode": "\\ClientSide\\Owner_Site\\ClientApp",
   "PreviewInSolutionExplorer": false
 }

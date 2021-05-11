@@ -14,9 +14,10 @@ using System.Threading.Tasks;
 
 namespace Shopping.API.Controllers
 {
-    [Route("api/Ownerdetail")]
+    [Route("api/Owner")]
     public class OwnerdetailController : Controller
     {
+        private string filter = null;
         private readonly IMapper Shoppingmapper;
         private readonly AppDbContext dbconnection;
         public OwnerdetailController(IMapper mapper, AppDbContext conn){
@@ -26,14 +27,14 @@ namespace Shopping.API.Controllers
 
         [Route("Adddetails")]
         [HttpPost]
-        public async Task<IActionResult> AddOwner([FromBody] AdddetailsRequest request, [FromBody]string filter)
+        public async Task<IActionResult> AddOwner([FromBody] AdddetailsRequest request)
         {
             try
             {
                 OwnerdetailsAdapter ad = new OwnerdetailsAdapter(Shoppingmapper,dbconnection);
                 OwnerdetailsResponse response = new OwnerdetailsResponse();
                 response = await ad.savedetails(request, filter);
-                if (response.Sucess == false) throw new CustomException("User Id is not mention");
+                if (response.Sucess == false) throw new CustomException("Internal Server Error !");
                 return Ok(response);
             }
             catch(Exception ex)
@@ -44,8 +45,7 @@ namespace Shopping.API.Controllers
         }
         [Route("ActivateId/{id?}")]
         [HttpGet]
-        [HttpPost]
-        public async Task<IActionResult> ActivateId(int? id,[FromBody] string filter)
+        public async Task<IActionResult> ActivateId(int? id)
         {
             try
             {
@@ -61,47 +61,38 @@ namespace Shopping.API.Controllers
             }
 
         }
-        [Route("ActivateIds/{filter?}")]
+        [Route("ActivateIds")]
         [HttpGet]
-        public async Task<IActionResult> ActivateIds(string filter)
+        public async Task<IActionResult> ActivateIds()
         {
-            try
-            {
+            try{
                 OwnerdetailsAdapter ad = new OwnerdetailsAdapter(Shoppingmapper, dbconnection);
                 List<OwnerdetailsResponse> response = new List<OwnerdetailsResponse>();
                 response = await ad.activeuserlist(filter);
                 if(response==null) throw new CustomException("No data Found");
                 return Ok(response);
-            }
-            catch (Exception ex)
-            {
+            }catch (Exception ex){
                 return Ok(ex.Message);
             }
-
         }
         [Route("DisabledIds")]
         [HttpGet]
-        [HttpPost]
-        public async Task<IActionResult> DisableIds([FromBody] string filter)
+        public async Task<IActionResult> DisableIds()
         {
-            try
-            {
+            try{
                 OwnerdetailsAdapter ad = new OwnerdetailsAdapter(Shoppingmapper, dbconnection);
-                OwnerdetailsResponse response = new OwnerdetailsResponse();
+                List<OwnerdetailsResponse> response = new List<OwnerdetailsResponse>();
                 response = await ad.disableduserlist(filter);
                 if (response == null) throw new CustomException("No data Found");
                 return Ok(response);
-            }
-            catch (Exception ex)
-            {
+            }catch (Exception ex){
                 return Ok(ex.Message);
             }
 
         }
         [Route("DisableId/{id?}")]
         [HttpGet]
-        [HttpPost]
-        public async Task<IActionResult> DisableId(int? id, [FromBody] string filter)
+        public async Task<IActionResult> DisableId(int? id)
         {
             try
             {
@@ -121,7 +112,7 @@ namespace Shopping.API.Controllers
         [Route("GetdetailsbyId/{id?}")]
         [HttpGet]
         [HttpPost]
-        public async Task<IActionResult> GetdetailsbyId(int? id, [FromBody] string filter)
+        public async Task<IActionResult> GetdetailsbyId(int? id)
         {
             try
             {
@@ -140,13 +131,14 @@ namespace Shopping.API.Controllers
 
         [Route("Updatedetails")]
         [HttpPost]
-        public async Task<IActionResult> Updatedetails([FromBody] ModifyRequest request, [FromBody] string filter)
+        public async Task<IActionResult> Updatedetails([FromBody] ModifyRequest request)
         {
             try
             {
                 OwnerdetailsAdapter ad = new OwnerdetailsAdapter(Shoppingmapper, dbconnection);
                 OwnerdetailsResponse response = new OwnerdetailsResponse();
-                response = await ad.updatedetailsbyid(request, filter);
+                if(request.UserId!=null) response = await ad.updatedetailsbyid(request, filter);
+                else throw new CustomException("Mention User Id !!");
                 if (response.Sucess == null) throw new CustomException("Internal Server Error");
                 return Ok(response);
             }
