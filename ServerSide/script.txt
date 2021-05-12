@@ -1,6 +1,6 @@
 create database shoppingsite
 
-create table dbo.ownerdetail(
+create table dbo.Ownerdetail(
 UserId bigint primary key Identity(1,1) not null,
 Username varchar(20) not null,
 Password varchar(max) not null,
@@ -9,13 +9,13 @@ ModifyOn datetime not null,
 IsActive bit not null,
 IsDelete bit not null
 )
-select * from dbo.ownerdetail
-insert into dbo.ownerdetail (Username,Password,CreatedOn,ModifyOn,IsActive,IsDelete) values('Satyam','sdsdlsjdlsdjlsdj',GETDATE(),GETDATE(),1,0)
-insert into dbo.ownerdetail (Username,Password,CreatedOn,ModifyOn,IsActive,IsDelete) values('Sam','sdsdlsjdlsdjlsdjsasas',GETDATE(),GETDATE(),1,0)
+select * from dbo.Ownerdetail
+insert into dbo.Ownerdetail (Username,Password,CreatedOn,ModifyOn,IsActive,IsDelete) values('Satyam','sdsdlsjdlsdjlsdj',GETDATE(),GETDATE(),1,0)
+insert into dbo.Ownerdetail (Username,Password,CreatedOn,ModifyOn,IsActive,IsDelete) values('Sam','sdsdlsjdlsdjlsdjsasas',GETDATE(),GETDATE(),1,0)
 
 create table dbo.Productdetails(
-UserId bigint primary key ,
-ProductId bigint Identity(1,1),
+UserId bigint,
+ProductId bigint primary key Identity(1,1),
 ProductName varchar(100),
 Price bigint,
 Quantity bigint,
@@ -24,8 +24,8 @@ IsActive bit not null,
 IsDelete bit not null,
 )
 
-alter table dbo.Productdetails add Constraint FK_ownerdetail_Productdetails FOREIGN KEY(UserId)
-references dbo.ownerdetail(UserId)
+alter table dbo.Productdetails add Constraint FK_Ownerdetail_Productdetails FOREIGN KEY(UserId)
+references dbo.Ownerdetails(UserId)
 
 
 alter table dbo.Productdetails add Rating bigint default 0
@@ -33,3 +33,31 @@ alter table dbo.Productdetails add Rating bigint default 0
 alter table dbo.Productdetails add CreatedOn date
 
 alter table dbo.Productdetails add Modifyon date
+
+create table dbo.GoodRecipt(
+	grnumber bigint primary key identity(1,1) not null,
+	Ownerid bigint not null,
+	ProductId bigint not null,
+	CreatedOn datetime not null,
+	ModifyOn datetime not null,
+	IsActive bit not null,
+	IsDelete bit not null
+	)
+
+alter table dbo.GoodRecipt add Constraint FK_GoodRecipt_ownerdetail_Productdetails FOREIGN KEY(Ownerid)
+references dbo.Ownerdetails(UserId)
+alter table dbo.GoodRecipt add Constraint FK_GoodRecipt_ownerdetail FOREIGN KEY(ProductId)
+references dbo.Productdetails(ProductId)
+
+create table dbo.GoodReceiptMapping(
+	mapid bigint identity(1,1) primary key not null,
+	logo varchar(max),
+	header varchar(max),
+	Ownerid bigint  not null,
+	CreatedOn datetime not null,
+	ModifyOn datetime not null,
+	IsActive bit not null,
+	IsDelete bit not null
+)
+alter table dbo.GoodReceiptMapping add Constraint FK_GoodReciptmapping_ownerdetail FOREIGN KEY(Ownerid)
+references [dbo].[Ownerdetails](UserId)

@@ -283,11 +283,6 @@ D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.API\
 D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.dll
 D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.pdb
 D:\Shopping_site\repos\SATYAM9717069261\Shoping_Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.genruntimeconfig.cache
-D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.csprojAssemblyReference.cache
-D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.AssemblyInfoInputs.cache
-D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.AssemblyInfo.cs
-D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.csproj.CoreCompileInputs.cache
-D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.MvcApplicationPartsAssemblyInfo.cache
 D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\bin\Debug\netcoreapp3.1\appsettings.json
 D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\bin\Debug\netcoreapp3.1\Shopping.API.exe
@@ -419,6 +414,11 @@ D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\bin\Debu
 D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\bin\Debug\netcoreapp3.1\Shopping.BLayer.pdb
 D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\bin\Debug\netcoreapp3.1\Shopping.Common.pdb
 D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\bin\Debug\netcoreapp3.1\Shopping.DataLayer.pdb
+D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.csprojAssemblyReference.cache
+D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.AssemblyInfoInputs.cache
+D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.AssemblyInfo.cs
+D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.csproj.CoreCompileInputs.cache
+D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.MvcApplicationPartsAssemblyInfo.cache
 D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\staticwebassets\Shopping.API.StaticWebAssets.Manifest.cache
 D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\staticwebassets\Shopping.API.StaticWebAssets.xml
 D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\scopedcss\bundle\Shopping.API.styles.css
@@ -427,3 +427,6 @@ D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debu
 D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.dll
 D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.pdb
 D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\obj\Debug\netcoreapp3.1\Shopping.API.genruntimeconfig.cache
+D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

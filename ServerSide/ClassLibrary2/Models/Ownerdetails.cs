@@ -9,6 +9,10 @@ namespace Shopping.DataLayer.Models
 {
     public partial class Ownerdetails
     {
+        public Ownerdetails()
+        {
+            Productdetails = new HashSet<Productdetails>();
+        }
         [Key]
         public long? UserId { get; set; }
         public string Username { get; set; }
@@ -17,5 +21,7 @@ namespace Shopping.DataLayer.Models
         public System.DateTime ModifyOn { get; set; }
         public bool IsActive { get; set; }
         public bool IsDelete { get; set; }
+
+        public ICollection<Productdetails> Productdetails { get; set; }
     }
 }

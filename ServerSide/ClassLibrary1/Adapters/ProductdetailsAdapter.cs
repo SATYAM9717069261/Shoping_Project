@@ -14,7 +14,9 @@ namespace Shopping.BLayer.Adapters
 {
     public class ProductdetailsAdapter : IProductdetails
     {
-        private Productdetails details;
+        private Productdetails productdetails;
+        private List<Productdetails> listproductdetails;
+        private Ownerdetails ownerdetails;
         private IMapper custommapper;
         private readonly AppDbContext dbconnection;
         public ProductdetailsAdapter(IMapper Shoppingmapper, AppDbContext conn)
@@ -24,15 +26,15 @@ namespace Shopping.BLayer.Adapters
         }
         public async Task<ProductdetailsResponse> activeproductbyid(int id, string filter)
         {
-            details = new Productdetails();
+            productdetails = new Productdetails();
             ProductdetailsResponse response = new ProductdetailsResponse();
-            details = await (from a in dbconnection.Productdetails where a.ProductId==id select a).FirstOrDefaultAsync();
-            if (details != null)
+            productdetails = await (from a in dbconnection.Productdetails where a.ProductId==id && a.IsDelete == true select a).FirstOrDefaultAsync();
+            if (productdetails != null)
             {
-                details.IsActive = true;
-                details.IsDelete = false;
+                productdetails.IsActive = true;
+                productdetails.IsDelete = false;
                 var row = await dbconnection.SaveChangesAsync();
-                response = custommapper.Map<Productdetails, ProductdetailsResponse>(details);
+                response = custommapper.Map<Productdetails, ProductdetailsResponse>(productdetails);
                 response.Sucess = row > 0;
             }
             else throw new CustomException("User Id is Not Valid");
@@ -41,25 +43,25 @@ namespace Shopping.BLayer.Adapters
 
         public async Task<List<ProductdetailsResponse>> activeproductlist(string filter)
         {
-            details = new Productdetails();
+            listproductdetails = new List<Productdetails>();
             List<ProductdetailsResponse> response = new List<ProductdetailsResponse>();
-            var data = await(from a in dbconnection.Productdetails where a.IsActive == true select a).ToListAsync();
-            if (data.Count != 0) response = custommapper.Map<List<ProductdetailsResponse>>(data);
+            listproductdetails = await(from a in dbconnection.Productdetails where a.IsActive == true select a).ToListAsync();
+            if (listproductdetails.Count != 0) response = custommapper.Map<List<ProductdetailsResponse>>(listproductdetails);
             else throw new CustomException("data Not Found !");
             return response;
         }
 
         public async Task<ProductdetailsResponse> disableproductbyid(int id, string filter)
         {
-            details = new Productdetails();
+            productdetails = new Productdetails();
             ProductdetailsResponse response = new ProductdetailsResponse();
-            details = await(from a in dbconnection.Productdetails where a.UserId == id select a).FirstOrDefaultAsync();
-            if (details != null)
+            productdetails = await(from a in dbconnection.Productdetails select a).FirstOrDefaultAsync();
+            if (productdetails != null)
             {
-                details.IsActive = false;
-                details.IsDelete = true;
+                productdetails.IsActive = false;
+                productdetails.IsDelete = true;
                 var row = await dbconnection.SaveChangesAsync();
-                response = custommapper.Map<Productdetails, ProductdetailsResponse>(details);
+                response = custommapper.Map<Productdetails, ProductdetailsResponse>(productdetails);
                 response.Sucess = row > 0;
             }
             else throw new CustomException("User Id is Not Valid");
@@ -68,7 +70,7 @@ namespace Shopping.BLayer.Adapters
 
         public async Task<List<ProductdetailsResponse>> disabledproductlist(string filter)
         {
-            details = new Productdetails();
+            productdetails = new Productdetails();
             List<ProductdetailsResponse> response = new List<ProductdetailsResponse>();
             var data = await(from a in dbconnection.Productdetails where a.IsDelete == true select a).ToListAsync();
             if (data.Count != 0) response = custommapper.Map<List<ProductdetailsResponse>>(data);
@@ -78,56 +80,77 @@ namespace Shopping.BLayer.Adapters
 
         public async Task<List<ProductdetailsResponse>> getdetailbyUserId(int id, string filter)
         {
-            details = new Productdetails();
+            var result = await (from a in dbconnection.Ownerdetails
+                                where a.UserId == id && a.IsActive == true && a.IsDelete == false
+                                select a).FirstOrDefaultAsync();
+            if (result == null) { throw new CustomException("User Id Not Found !"); }
+
+            listproductdetails = new List<Productdetails>();
             List<ProductdetailsResponse> response = new List<ProductdetailsResponse>();
-            var data = await(from a in dbconnection.Productdetails where a.UserId == id select a).ToListAsync();
-            if (data.Count != 0) response = custommapper.Map<List<ProductdetailsResponse>>(data);
+            listproductdetails = await(from a in dbconnection.Productdetails where a.OwnerdetailUserId==id select a).ToListAsync();
+            if (listproductdetails.Count != 0) response = custommapper.Map<List<ProductdetailsResponse>>(listproductdetails);
             else throw new CustomException("data Not Found !");
             return response;
         }
 
         public async Task<List<ProductdetailsResponse>> getdetailbyrating(int Rating, string filter)
         {
-            details = new Productdetails();
+            listproductdetails = new List<Productdetails>();
             List<ProductdetailsResponse> response = new List<ProductdetailsResponse>();
-            var data = await(from a in dbconnection.Productdetails where a.Rating == Rating select a).ToListAsync();
-            if (data.Count != 0) response = custommapper.Map<List<ProductdetailsResponse>>(data);
+            listproductdetails = await(from a in dbconnection.Productdetails where a.Rating == Rating select a).ToListAsync();
+            if (listproductdetails.Count != 0) response = custommapper.Map<List<ProductdetailsResponse>>(listproductdetails);
             else throw new CustomException("data Not Found !");
             return response;
         }
 
         public async Task<ProductdetailsResponse> saveproduct(AddProductdetailRequest data, string filter)
         {
-            details = new Productdetails();
+            var result = await (from a in dbconnection.Ownerdetails
+                                where a.UserId == data.OwnerdetailUserId && a.IsActive == true && a.IsDelete == false
+                                select a).FirstOrDefaultAsync();
+            if (result == null ) { throw new CustomException("User Id Not Found !"); }
+            
+            ownerdetails = new Ownerdetails();
+            ownerdetails.UserId = data.OwnerdetailUserId;
+            ownerdetails.Productdetails = new List<Productdetails> { productdetails };
+
+            productdetails = new Productdetails();
             ProductdetailsResponse response = new ProductdetailsResponse();
-            details = custommapper.Map<AddProductdetailRequest, Productdetails>(data);
-            details.CreatedOn = DateTime.UtcNow;
-            details.ModifyOn = DateTime.UtcNow;
-            details.IsActive = true;
-            details.IsDelete = false;
-            dbconnection.Productdetails.Add(details);
+            productdetails = custommapper.Map<AddProductdetailRequest, Productdetails>(data);
+            productdetails.CreatedOn = DateTime.UtcNow;
+            productdetails.ModifyOn = DateTime.UtcNow;
+            productdetails.IsActive = true;
+            productdetails.IsDelete = false;
+            dbconnection.Productdetails.Add(productdetails);
+
             var row = await dbconnection.SaveChangesAsync();
-            response = custommapper.Map<Productdetails, ProductdetailsResponse>(details);
+            response = custommapper.Map<Productdetails, ProductdetailsResponse>(productdetails);
             response.Sucess = row > 0;
             return response;
         }
 
         public async Task<ProductdetailsResponse> updatedetailsbyid(AddProductdetailRequest data, string filter)
         {
-            details = new Productdetails();
+            var result = await (from a in dbconnection.Ownerdetails
+                                where a.UserId == data.OwnerdetailUserId && a.IsActive == true && a.IsDelete == false
+                                select a).FirstOrDefaultAsync();
+            if (result == null) { throw new CustomException("User Id Not Found !"); }
+
+            productdetails = new Productdetails();
             ProductdetailsResponse response = new ProductdetailsResponse();
-            details = await (from a in dbconnection.Productdetails where a.ProductId == data.ProductId && a.UserId==data.UserId  select a).FirstOrDefaultAsync();
-            if (details != null)
+            productdetails = await (from a in dbconnection.Productdetails where a.ProductId == data.ProductId && a.OwnerdetailUserId == data.OwnerdetailUserId select a).FirstOrDefaultAsync();
+            if (productdetails != null)
             {
-                details.ProductName = data.ProductName;
-                details.Quantity =(long)data.Quantity;
-                details.Price = data.Price;
-                details.ImageUrl = data.ImageUrl;
-                details.ModifyOn = DateTime.UtcNow;
-                details.IsActive = true;
-                details.IsDelete = false;
+                productdetails.ProductName = data.ProductName;
+                productdetails.Quantity =data.Quantity;
+                productdetails.Price = data.Price;
+                productdetails.ImageUrl = data.ImageUrl;
+                productdetails.ModifyOn = DateTime.UtcNow;
+                productdetails.Rating = data.Rating;
+                productdetails.IsActive = true;
+                productdetails.IsDelete = false;
                 var row = await dbconnection.SaveChangesAsync();
-                response = custommapper.Map<Productdetails, ProductdetailsResponse>(details);
+                response = custommapper.Map<Productdetails, ProductdetailsResponse>(productdetails);
                 response.Sucess = row > 0;
             }
             else throw new CustomException("detail !");
@@ -136,17 +159,17 @@ namespace Shopping.BLayer.Adapters
 
         public async Task<ProductdetailsResponse> getdetailbyProductId(int id, string filter)
         {
-            details = new Productdetails();
+            productdetails = new Productdetails();
             ProductdetailsResponse response = new ProductdetailsResponse();
-            var data = await (from a in dbconnection.Productdetails where a.ProductId == id select a).ToListAsync();
-            if (data.Count != 0) response = custommapper.Map<ProductdetailsResponse>(data);
+            productdetails = await (from a in dbconnection.Productdetails where a.ProductId == id select a).FirstOrDefaultAsync();
+            if (productdetails != null) response = custommapper.Map<ProductdetailsResponse>(productdetails);
             else throw new CustomException("data Not Found !");
             return response;
         }
 
         public async Task<List<ProductdetailsResponse>> getdetailbyProductName(string name, string filter)
         {
-            details = new Productdetails();
+            productdetails = new Productdetails();
             List<ProductdetailsResponse> response = new List<ProductdetailsResponse>();
             var data = await (from a in dbconnection.Productdetails where a.ProductName == name select a).ToListAsync();
             if (data.Count != 0) response = custommapper.Map<List<ProductdetailsResponse>>(data);
@@ -154,6 +177,5 @@ namespace Shopping.BLayer.Adapters
             return response;
         }
 
-        
     }
 }

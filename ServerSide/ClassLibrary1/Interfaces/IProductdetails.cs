@@ -21,5 +21,6 @@ namespace Shopping.BLayer.Interfaces
         Task<ProductdetailsResponse> getdetailbyProductId(int id, string filter);
         Task<List<ProductdetailsResponse>> getdetailbyProductName(string name, string filter);
 
+
     }
 }

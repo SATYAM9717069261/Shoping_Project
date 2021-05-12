@@ -12,6 +12,6 @@ namespace Shopping.Common.Requests
         public string ImageUrl { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDelete { get; set; }
-        public int ? Rating { get; set; }
+        public long ? Rating { get; set; }
     }
 }

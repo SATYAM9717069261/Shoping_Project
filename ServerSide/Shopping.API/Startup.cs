@@ -14,6 +14,7 @@ using AutoMapper;
 using Shopping.DataLayer.AutoMapperStructure;
 using Microsoft.EntityFrameworkCore;
 using Shopping.DataLayer.Models;
+using Newtonsoft.Json;
 
 namespace Shopping.API
 {
@@ -29,7 +30,9 @@ namespace Shopping.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc( options=>  options.EnableEndpointRouting = false );
+
+            services.AddMvc(options => options.EnableEndpointRouting = false)
+                .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             var mapperConfig = new MapperConfiguration(mc =>{
                 mc.AddProfile(new Automap());
             });

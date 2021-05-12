@@ -33,7 +33,8 @@ namespace Shopping.API.Controllers
             {
                 OwnerdetailsAdapter ad = new OwnerdetailsAdapter(Shoppingmapper,dbconnection);
                 OwnerdetailsResponse response = new OwnerdetailsResponse();
-                response = await ad.savedetails(request, filter);
+                if(request.UserName != null && request.Password!=null) response = await ad.savedetails(request, filter);
+                else throw new CustomException("User Name and Password didn't Mention !");
                 if (response.Sucess == false) throw new CustomException("Internal Server Error !");
                 return Ok(response);
             }

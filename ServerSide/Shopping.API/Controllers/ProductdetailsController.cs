@@ -33,7 +33,8 @@ namespace Shopping.API.Controllers
             {
                 ProductdetailsAdapter ad = new ProductdetailsAdapter(Shoppingmapper, dbconnection);
                 ProductdetailsResponse response = new ProductdetailsResponse();
-                response = await ad.saveproduct(request, filter);
+                if(request.OwnerdetailUserId !=null) response = await ad.saveproduct(request, filter);
+                else throw new CustomException("Mention User id !");
                 if (response.Sucess == false) throw new CustomException("Internal Server Error !");
                 return Ok(response);
             }
@@ -119,7 +120,6 @@ namespace Shopping.API.Controllers
 
         [Route("GetdetailsbyProductId/{id?}")]
         [HttpGet]
-        [HttpPost]
         public async Task<IActionResult> GetdetailsbyProductId(int? id)
         {
             try
@@ -127,7 +127,7 @@ namespace Shopping.API.Controllers
                 ProductdetailsAdapter ad = new ProductdetailsAdapter(Shoppingmapper, dbconnection);
                 ProductdetailsResponse response = new ProductdetailsResponse();
                 if (id != null) response = await ad.getdetailbyProductId((int)id, filter);
-                else throw new CustomException("User Id is not mention");
+                else throw new CustomException("Product Id is not mention");
                 return Ok(response);
             }
             catch (Exception ex)
@@ -163,7 +163,7 @@ namespace Shopping.API.Controllers
             {
                 ProductdetailsAdapter ad = new ProductdetailsAdapter(Shoppingmapper, dbconnection);
                 ProductdetailsResponse response = new ProductdetailsResponse();
-                if (request.ProductId != null && request.UserId !=null ) response = await ad.updatedetailsbyid(request, filter);
+                if (request.ProductId != null && request.OwnerdetailUserId != null ) response = await ad.updatedetailsbyid(request, filter);
                 else throw new CustomException("Please Mention Product Id and User Id !!");
                 if (response.Sucess == null) throw new CustomException("Internal Server Error");
                 return Ok(response);
@@ -177,7 +177,6 @@ namespace Shopping.API.Controllers
 
         [Route("GetdetailsbyProductRating/{rating?}")]
         [HttpGet]
-        [HttpPost]
         public async Task<IActionResult> GetdetailsbyProductrating(int? rating)
         {
             try
@@ -197,8 +196,7 @@ namespace Shopping.API.Controllers
         
         [Route("GetdetailsbyProductName/{name?}")]
         [HttpGet]
-        [HttpPost]
-        public async Task<IActionResult> GetdetailsbyProductrating(string name)
+        public async Task<IActionResult> GetdetailsbyProductName(string name)
         {
             try
             {
