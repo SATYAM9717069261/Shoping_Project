@@ -1,15 +1,19 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shopping.BLayer.Adapters;
 using Shopping.Common.Exceptions;
 using Shopping.Common.Requests;
 using Shopping.Common.Responses;
+using Shopping.Common;
 using Shopping.DataLayer.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace Shopping.API.Controllers
 {
@@ -19,28 +23,39 @@ namespace Shopping.API.Controllers
         private string filter = null;
         private readonly IMapper Shoppingmapper;
         private readonly AppDbContext dbconnection;
-        public ProductdetailsController(IMapper mapper, AppDbContext conn)
+        private IConfiguration _config;
+        
+        public ProductdetailsController(IMapper mapper, AppDbContext conn, IConfiguration configuration)
         {
             Shoppingmapper = mapper;
             this.dbconnection = conn;
+            _config = configuration;
         }
 
         [Route("AddProduct")]
         [HttpPost]
-        public async Task<IActionResult> AddProduct([FromBody] AddProductdetailRequest request)
+        public async Task<IActionResult> AddProduct([FromForm] AddProductdetailRequest request)
         {
             try
             {
                 ProductdetailsAdapter ad = new ProductdetailsAdapter(Shoppingmapper, dbconnection);
                 ProductdetailsResponse response = new ProductdetailsResponse();
-                if(request.OwnerdetailUserId !=null) response = await ad.saveproduct(request, filter);
+                if (request.OwnerdetailUserId != null){
+                    var fileurl = new MultiFileUpload(_config);
+                    List<KeyValuePair<string, bool>> url = await fileurl.OnPostUploadAsync(request.ImageContent);
+
+                    foreach(KeyValuePair<string,bool> data in url) 
+                        if(data.Value == true) { request.ImageUrl += (data.Key+","); }
+                    
+                    response = await ad.saveproduct(request, filter);
+                }
                 else throw new CustomException("Mention User id !");
                 if (response.Sucess == false) throw new CustomException("Internal Server Error !");
                 return Ok(response);
             }
             catch (Exception ex)
             {
-                return Ok(ex.Message);
+                return Ok(ex);
             }
         }
         [Route("ActivateId/{id?}")]

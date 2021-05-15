@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace Shopping.Common.Requests
 {
     public class AddProductdetailRequest: ProductBaseRequest
@@ -12,6 +12,7 @@ namespace Shopping.Common.Requests
         public string ImageUrl { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDelete { get; set; }
-        public long ? Rating { get; set; }
+        public long? Rating { get; set; }
+        public List<IFormFile> ImageContent { get; set; }
     }
 }
