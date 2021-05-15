@@ -53,7 +53,7 @@ namespace Shopping.API.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(ex);
+                return Ok(ex.Message);
             }
         }
         [Route("AddProducts")]
@@ -79,7 +79,7 @@ namespace Shopping.API.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(ex);
+                return Ok(ex.Message);
             }
         }
 

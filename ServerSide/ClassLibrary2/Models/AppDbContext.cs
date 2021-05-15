@@ -12,5 +12,8 @@ namespace Shopping.DataLayer.Models
 
         public virtual DbSet<Ownerdetails> Ownerdetails { get; set; }
         public virtual DbSet<Productdetails> Productdetails { get; set; }
+        public virtual DbSet<GoodRecipt> GoodRecipt { get; set; }
+        public virtual DbSet<GoodReceiptMapping> GoodReceiptMapping { get; set; }
+
     }
 }

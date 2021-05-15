@@ -36,17 +36,19 @@ alter table dbo.Productdetails add Modifyon date
 
 create table dbo.GoodRecipt(
 	grnumber bigint primary key identity(1,1) not null,
-	Ownerid bigint not null,
-	ProductId bigint not null,
+	OwnerdetailUserId bigint not null,
+	ProductdetailProductId bigint not null,
+	BillNumber varchar(MAX) not null,
+	CustomerName varchar(MAX) not null,
 	CreatedOn datetime not null,
 	ModifyOn datetime not null,
 	IsActive bit not null,
 	IsDelete bit not null
 	)
 
-alter table dbo.GoodRecipt add Constraint FK_GoodRecipt_ownerdetail_Productdetails FOREIGN KEY(Ownerid)
+alter table dbo.GoodRecipt add Constraint FK_GoodRecipt_ownerdetail_Productdetails FOREIGN KEY(OwnerdetailUserId)
 references dbo.Ownerdetails(UserId)
-alter table dbo.GoodRecipt add Constraint FK_GoodRecipt_ownerdetail FOREIGN KEY(ProductId)
+alter table dbo.GoodRecipt add Constraint FK_GoodRecipt_ownerdetail FOREIGN KEY(ProductdetailProductId)
 references dbo.Productdetails(ProductId)
 
 create table dbo.GoodReceiptMapping(

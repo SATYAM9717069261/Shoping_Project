@@ -18,7 +18,13 @@ namespace Shopping.DataLayer.AutoMapperStructure
 
             CreateMap<AddProductdetailRequest, Productdetails>();
             CreateMap<Productdetails, ProductdetailsResponse>();
-           // CreateMap<ModifyRequest, Ownerdetails>();
+            // CreateMap<ModifyRequest, Ownerdetails>();
+
+            CreateMap<GoodReceiptRequest, GoodRecipt>();
+            CreateMap<GoodRecipt, GoodReceiptResponse>();
+
+            CreateMap<GoodReceiptMappingRequest, GoodReceiptMapping>();
+            CreateMap<GoodReceiptMapping, GoodReceiptMappingResponse>();
         }
        
     }
