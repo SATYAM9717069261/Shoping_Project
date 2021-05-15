@@ -13,6 +13,6 @@ namespace Shopping.Common.Requests
         public bool? IsActive { get; set; }
         public bool? IsDelete { get; set; }
         public long? Rating { get; set; }
-        public List<IFormFile> ImageContent { get; set; }
+        public IFormFile ImageContent { get; set; }
     }
 }

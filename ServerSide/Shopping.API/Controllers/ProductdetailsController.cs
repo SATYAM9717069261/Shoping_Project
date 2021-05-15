@@ -23,13 +23,13 @@ namespace Shopping.API.Controllers
         private string filter = null;
         private readonly IMapper Shoppingmapper;
         private readonly AppDbContext dbconnection;
-        private IConfiguration _config;
+        private string _config;
         
         public ProductdetailsController(IMapper mapper, AppDbContext conn, IConfiguration configuration)
         {
             Shoppingmapper = mapper;
             this.dbconnection = conn;
-            _config = configuration;
+            _config = configuration["StoredProductFilesPath"];
         }
 
         [Route("AddProduct")]
@@ -42,11 +42,9 @@ namespace Shopping.API.Controllers
                 ProductdetailsResponse response = new ProductdetailsResponse();
                 if (request.OwnerdetailUserId != null){
                     var fileurl = new MultiFileUpload(_config);
-                    List<KeyValuePair<string, bool>> url = await fileurl.OnPostUploadAsync(request.ImageContent);
-
-                    foreach(KeyValuePair<string,bool> data in url) 
-                        if(data.Value == true) { request.ImageUrl += (data.Key+","); }
-                    
+                    KeyValuePair<string, bool> url = await fileurl.fileUpload(request.ImageContent); 
+                   if(url.Value == true) { request.ImageUrl = url.Key; }
+                   else { request.ImageUrl = "Some Error Occur During Uplaoad Image"; }
                     response = await ad.saveproduct(request, filter);
                 }
                 else throw new CustomException("Mention User id !");
@@ -58,6 +56,33 @@ namespace Shopping.API.Controllers
                 return Ok(ex);
             }
         }
+        [Route("AddProducts")]
+        [HttpPost]
+        public async Task<IActionResult> AddProducts([FromForm] List<AddProductdetailRequest> requests)
+        {
+            try
+            {
+                List<ProductdetailsResponse> response = new List<ProductdetailsResponse>();
+                foreach (AddProductdetailRequest request in requests) {
+                    ProductdetailsAdapter ad = new ProductdetailsAdapter(Shoppingmapper, dbconnection);                   
+                    if (request.OwnerdetailUserId != null)
+                    {
+                        var fileurl = new MultiFileUpload(_config);
+                        KeyValuePair<string, bool> url = await fileurl.fileUpload(request.ImageContent);
+                        if (url.Value == true) { request.ImageUrl = url.Key; }
+                        else { request.ImageUrl = "Some Error Occur During Uplaoad Image"; }
+                        response.Add(await ad.saveproduct(request, filter));
+                    }
+                    else throw new CustomException("Mention User id !");  
+                }
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return Ok(ex);
+            }
+        }
+
         [Route("ActivateId/{id?}")]
         [HttpGet]
         public async Task<IActionResult> ActivateId(int? id)
