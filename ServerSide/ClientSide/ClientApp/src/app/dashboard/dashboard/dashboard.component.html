@@ -1,0 +1,201 @@
+<div class="page-wrapper chiller-theme {{toggle_menu}}">
+    <nav style="height: 100%;display: flex; position: fixed; z-index: 1;">
+        <div class="btn btn-sm btn-dark" style="color: white;">
+            <ul style="text-decoration: none;list-style: none;margin-left: -32px;margin-top: 16px;">
+                <li class="sidebar-dropdown" style="cursor: pointer;" (click)="sidemenushow()"> <i class="fas fa-bars"></i></li>
+                <hr>
+                <li class="sidebar-dropdown" style="margin-top: 20px;"> <i class="fa fa-tachometer-alt"></i> </li>
+                <hr>
+                <li class="sidebar-dropdown" style="margin-top: 20px;"> <i class="fa fa-shopping-cart"></i> </li>
+                <hr>
+                <li class="sidebar-dropdown" style="margin-top: 20px;"> <i class="fa fa-gem"></i> </li>
+                <hr>
+                <li class="sidebar-dropdown" style="margin-top: 20px;"> <i class="fa fa-chart-line"></i> </li>
+                <hr>
+
+                <li>
+                    <i class="fa fa-bell"></i>
+                    <span class="badge badge-pill badge-warning notification"
+                        *ngIf="(defaultdata['notification'] > 0)">{{defaultdata['notification']}}</span>
+                </li>
+                <hr>
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <span class="badge badge-pill badge-success notification"
+                        *ngIf="(defaultdata['message'] > 0)">{{defaultdata['message']}}</span>
+                </li>
+                <hr>
+                <li>
+                    <i class="fa fa-cog"></i>
+                </li>
+                <hr>
+                <li>
+                    <i class="fa fa-power-off"></i>
+                </li>
+
+
+            </ul>
+        </div>
+
+    </nav>
+
+    <nav id="sidebar" class="sidebar-wrapper">
+        <div class="sidebar-content">
+            <div class="sidebar-brand" style="float: right;">
+                <div id="close-sidebar" (click)="sidemenudiable()">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="sidebar-header">
+                <div class="user-pic">
+                    <img class="img-responsive img-rounded" [src]="defaultdata['profileimage']" alt="User picture">
+                </div>
+                <div class="user-info">
+                    <span class="user-name">{{defaultdata['username']}}
+                        <strong>{{defaultdata['userlastname']}}</strong>
+                    </span>
+                    <span class="user-role">{{defaultdata['role']}}</span>
+                    <span class="user-status">
+                        <i class="fa fa-circle" [style.color]="defaultdata['status_enum']?'green':'red'"></i>
+                        <span>{{defaultdata['status']}}</span>
+                    </span>
+                </div>
+            </div>
+            <!-- sidebar-header  -->
+            <div class="sidebar-search">
+                <div>
+                    <div class="input-group">
+                        <input type="text" class="form-control search-menu" placeholder="Search...">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- sidebar-search  -->
+            <div class="sidebar-menu">
+                <ul>
+                    <li class="header-menu">
+                        <span>General</span>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a>
+                            <i class="fa fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                        <!--   <span class="badge badge-pill badge-warning">New</span> -->
+
+                        <!--             <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Dashboard 1
+                      <span class="badge badge-pill badge-success">Pro</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">Dashboard 2</a>
+                  </li>
+                  <li>
+                    <a href="#">Dashboard 3</a>
+                  </li>
+                </ul>
+              </div> -->
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a>
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>E-commerce</span>
+                            <!-- <span class="badge badge-pill badge-danger">3</span> -->
+                        </a>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a href="#">
+                            <i class="far fa-gem"></i>
+                            <span>Components</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a>
+                            <i class="fa fa-chart-line"></i>
+                            <span>Charts</span>
+                        </a>
+                    </li>
+                    <!--     <li class="header-menu">
+                        <span>Config</span>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-book"></i>
+                            <span>Bill</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-calendar"></i>
+                            <span>Product</span>
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- sidebar-menu  -->
+        </div>
+        <!-- sidebar-content  -->
+        <div class="sidebar-footer">
+            <a>
+                <i class="fa fa-bell"></i>
+                <span class="badge badge-pill badge-warning notification"
+                    *ngIf="(defaultdata['notification'] > 0)">{{defaultdata['notification']}}</span>
+            </a>
+            <a>
+                <i class="fa fa-envelope"></i>
+                <span class="badge badge-pill badge-success notification"
+                    *ngIf="(defaultdata['message'] > 0)">{{defaultdata['message']}}</span>
+            </a>
+            <a>
+                <i class="fa fa-cog"></i>
+            </a>
+            <a>
+                <i class="fa fa-power-off"></i>
+            </a>
+        </div>
+    </nav>
+    <!-- sidebar-wrapper  -->
+    <main class="page-content" style="    margin-top: -36px; display: contents;">
+        
+        <div class="container-fluid">
+            <nav class="navbar navbar-light bg-light justify-content-between">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a>Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Library</li>
+                    </ol>
+                </nav>
+                <form class="form-inline">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Category Select
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item">Type1</a>
+                            <a class="dropdown-item">Type2</a>
+                            <a class="dropdown-item">Type3</a>
+                        </div>
+                    </div>
+
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </nav>
+            <hr>
+
+            <!-- Content Show -->
+            <router-outlet></router-outlet>
+            <!-- End Content show-->
+
+        </div>
+    </main>
+    <!-- page-content" -->
+</div>

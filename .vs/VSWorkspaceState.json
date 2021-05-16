@@ -1,11 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ClientSide",
-    "\\ClientSide\\Owner_Site",
-    "\\ClientSide\\Owner_Site\\ClientApp",
+    "\\ClientSide\\OwnerSide",
     "\\ServerSide"
   ],
-  "SelectedNode": "\\ClientSide\\Owner_Site\\ClientApp",
+  "SelectedNode": "\\ServerSide\\Shopping.sln",
   "PreviewInSolutionExplorer": false
 }

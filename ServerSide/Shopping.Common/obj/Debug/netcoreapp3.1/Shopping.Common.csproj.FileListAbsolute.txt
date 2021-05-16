@@ -24,4 +24,3 @@ D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.Common\obj\D
 D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.Common\obj\Debug\netcoreapp3.1\Shopping.Common.csproj.CoreCompileInputs.cache
 D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.Common\obj\Debug\netcoreapp3.1\Shopping.Common.dll
 D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.Common\obj\Debug\netcoreapp3.1\Shopping.Common.pdb
-D:\Shopping_site\repos\SATYAM9717069261\Project\ServerSide\Shopping.Common\obj\Debug\netcoreapp3.1\Shopping.Common.csprojAssemblyReference.cache
