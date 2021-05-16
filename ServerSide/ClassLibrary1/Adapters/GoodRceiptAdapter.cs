@@ -23,40 +23,6 @@ namespace Shopping.BLayer.Adapters
             custommapper = Shoppingmapper;
             this.dbconnection = conn;
         }
-        public Task<GoodReceiptResponse> activebyid(int productid, string filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<GoodReceiptResponse> disablebyid(int productid, string filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<GoodReceiptResponse>> getactiveproductsbyuserid(int userid, string filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<GoodReceiptResponse> getdetailbyGrnumber(int grnum, string filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<GoodReceiptResponse>> getdetailsbyProductid(int productid, string filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<GoodReceiptResponse>> getdetailsbyUserId(int userid, string filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<GoodReceiptResponse>> getdisabledproductsbyuserid(int userid, string filter)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<GoodReceiptResponse> savedetails(GoodReceiptRequest data, string filter)
         {
@@ -114,6 +80,36 @@ namespace Shopping.BLayer.Adapters
             response = custommapper.Map<GoodRecipt, GoodReceiptResponse>(details);
             response.Sucess = row > 0;
             return response;
+        }
+
+        public Task<GoodReceiptResponse> updatedetailsbyGrnmber(GoodReceiptRequest data, string filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<GoodReceiptResponse>> updatecustomernamebyGrnmber(GoodReceiptRequest data, string filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<GoodReceiptResponse> getdetailbyGrnumber(int? grnum, string filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<GoodReceiptResponse>> getdetailbyBillnumber(string billnum, string filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<GoodReceiptResponse>> getdetailsbyProductid(int? productid, int? userid, string filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<GoodReceiptResponse>> getdetailsbyUserId(int? userid, string filter)
+        {
+            throw new NotImplementedException();
         }
     }
 }

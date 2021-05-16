@@ -9,10 +9,7 @@ namespace Shopping.BLayer.Interfaces
 {
     interface IGoodReceiptMapping
     {
-        Task<GoodReceiptMappingResponse> savedetails(GoodReceiptMappingRequest data, string filter);
-        Task<GoodReceiptMappingResponse> updatedetails(GoodReceiptMappingRequest data, string filter);
-        // disable all mapping of user except grid which you pass
-        Task<GoodReceiptMappingResponse> disableGrMapping(int userid,int grid, string filter);
+        Task<GoodReceiptMappingResponse> save(GoodReceiptMappingRequest data);
         
     }
 }

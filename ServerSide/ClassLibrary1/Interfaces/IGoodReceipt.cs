@@ -10,13 +10,11 @@ namespace Shopping.BLayer.Interfaces
     interface IGoodReceipt
     {
         Task<GoodReceiptResponse> savedetails(GoodReceiptRequest data, string filter);
-        Task<GoodReceiptResponse> updatedetails(GoodReceiptRequest data, string filter);
-        Task<GoodReceiptResponse> getdetailbyGrnumber(int grnum, string filter);
-        Task<List<GoodReceiptResponse>> getdetailsbyProductid(int productid, string filter);
-        Task<List<GoodReceiptResponse>> getdetailsbyUserId(int userid, string filter);
-        Task<GoodReceiptResponse> disablebyid(int productid, string filter);
-        Task<GoodReceiptResponse> activebyid(int productid, string filter);
-        Task<List<GoodReceiptResponse>> getdisabledproductsbyuserid(int userid, string filter);
-        Task<List<GoodReceiptResponse>> getactiveproductsbyuserid(int userid, string filter);
+        Task<GoodReceiptResponse> updatedetailsbyGrnmber(GoodReceiptRequest data, string filter);
+        Task<List<GoodReceiptResponse>> updatecustomernamebyGrnmber(GoodReceiptRequest data, string filter);
+        Task<GoodReceiptResponse> getdetailbyGrnumber(int? grnum, string filter);
+        Task<List<GoodReceiptResponse>> getdetailbyBillnumber(string billnum, string filter);
+        Task<List<GoodReceiptResponse>> getdetailsbyProductid(int? productid,int? userid , string filter);
+        Task<List<GoodReceiptResponse>> getdetailsbyUserId(int? userid, string filter);
     }
 }
