@@ -37,7 +37,7 @@ namespace Shopping.API.Controllers
             try
             {
                 GoodReceiptMappingAdapter ad = new GoodReceiptMappingAdapter(Shoppingmapper, dbconnection);
-                GoodReceiptResponse response = new GoodReceiptResponse();
+                GoodReceiptMappingResponse response = new GoodReceiptMappingResponse();
                 if (request.UserId != null)
                 {
                     var fileurl = new MultiFileUpload(_config);

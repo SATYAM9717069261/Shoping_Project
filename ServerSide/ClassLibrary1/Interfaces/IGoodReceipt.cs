@@ -11,10 +11,10 @@ namespace Shopping.BLayer.Interfaces
     {
         Task<GoodReceiptResponse> savedetails(GoodReceiptRequest data, string filter);
         Task<GoodReceiptResponse> updatedetailsbyGrnmber(GoodReceiptRequest data, string filter);
-        Task<List<GoodReceiptResponse>> updatecustomernamebyGrnmber(GoodReceiptRequest data, string filter);
-        Task<GoodReceiptResponse> getdetailbyGrnumber(int? grnum, string filter);
-        Task<List<GoodReceiptResponse>> getdetailbyBillnumber(string billnum, string filter);
-        Task<List<GoodReceiptResponse>> getdetailsbyProductid(int? productid,int? userid , string filter);
+        Task<List<GoodReceiptResponse>> updatecustomernamebyBillnmber(GoodReceiptRequest data, string filter);
+        Task<GoodReceiptResponse> getdetailbyGrnumber(int? grnum, long? userid, string filter);
+        Task<List<GoodReceiptResponse>> getdetailbyBillnumber(string billnum, long? userid, string filter);
+        Task<List<GoodReceiptResponse>> getdetailsbyProductid(long? productid, long? userid, string filter);
         Task<List<GoodReceiptResponse>> getdetailsbyUserId(int? userid, string filter);
     }
 }

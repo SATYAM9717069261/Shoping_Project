@@ -78,8 +78,8 @@ namespace Shopping.API.Controllers
                 List<GoodReceiptResponse> response = new List<GoodReceiptResponse>();
                 GoodRceiptAdapter ad = new GoodRceiptAdapter(custommapper, dbconnection);
                 if (request.BillNumber == null) throw new CustomException("Bill Number is not mention");
-                if(request.CustomerName ==null) throw new CustomException("Customer Name is not mention");
-                response=await ad.updatecustomernamebyGrnmber(request, filter);
+                if(request.CustomerName ==null || request.CustomerName == "") throw new CustomException("Customer Name is not mention");
+                response=await ad.updatecustomernamebyBillnmber(request, filter);
                 return Ok(response);
             }
             catch (Exception ex)
@@ -88,15 +88,15 @@ namespace Shopping.API.Controllers
             }
         }
 
-        [Route("Selectbygrnumber/{gr?}")]
+        [Route("Selectbygrnumber/{gr?}/{Userid?}")]
         [HttpGet]
-        public async Task<IActionResult> Selectbygrnumber(int? gr)
+        public async Task<IActionResult> Selectbygrnumber(int? gr, long? Userid)
         {
             try
             {
                 GoodReceiptResponse response = new GoodReceiptResponse();
                 GoodRceiptAdapter ad = new GoodRceiptAdapter(custommapper, dbconnection);
-                if (gr!=null) response = await ad.getdetailbyGrnumber(gr, filter); 
+                if (gr!=null || Userid !=null) response = await ad.getdetailbyGrnumber(gr, Userid, filter); 
                 else throw new CustomException("Good Receipt Number is not mention");        
                 return Ok(response);
             }
@@ -106,15 +106,15 @@ namespace Shopping.API.Controllers
             }
         }
 
-        [Route("Selectbybillnumber/{bill?}")]
+        [Route("Selectbybillnumber/{bill?}/{Userid?}")]
         [HttpGet]
-        public async Task<IActionResult> Selectbybillnumber(string bill)
+        public async Task<IActionResult> Selectbybillnumber(string bill, long? Userid)
         {
             try
             {
                 List<GoodReceiptResponse> response = new List<GoodReceiptResponse>();
                 GoodRceiptAdapter ad = new GoodRceiptAdapter(custommapper, dbconnection);
-                if (bill != null) response=await ad.getdetailbyBillnumber(bill, filter);
+                if (bill != null || Userid !=null) response=await ad.getdetailbyBillnumber(bill, Userid, filter);
                 else throw new CustomException("Bill Number is not mention");
                 return Ok(response);
             }
@@ -126,7 +126,7 @@ namespace Shopping.API.Controllers
 
         [Route("SelectbyProductid/{proid?}/{Userid?}")]
         [HttpGet]
-        public async Task<IActionResult> SelectbyProductId(int? proid, int? Userid)
+        public async Task<IActionResult> SelectbyProductId(long? proid, long? Userid)
         {
             try
             {

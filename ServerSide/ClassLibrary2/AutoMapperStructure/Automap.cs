@@ -22,6 +22,7 @@ namespace Shopping.DataLayer.AutoMapperStructure
 
             CreateMap<GoodReceiptRequest, GoodRecipt>();
             CreateMap<GoodRecipt, GoodReceiptResponse>();
+            CreateMap<List<GoodRecipt>, List<GoodReceiptResponse>>();
 
             CreateMap<GoodReceiptMappingRequest, GoodReceiptMapping>();
             CreateMap<GoodReceiptMapping, GoodReceiptMappingResponse>();

@@ -15,8 +15,8 @@ namespace Shopping.BLayer.Adapters
     public class GoodRceiptAdapter : IGoodReceipt
     {
         private GoodRecipt details;
+        private List<GoodRecipt> Listdetails;
         private IMapper custommapper;
-        private Ownerdetails ownerdetails;
         private readonly AppDbContext dbconnection;
         public GoodRceiptAdapter(IMapper Shoppingmapper, AppDbContext conn)
         {
@@ -57,7 +57,7 @@ namespace Shopping.BLayer.Adapters
             return response;
         }
 
-        public async Task<GoodReceiptResponse> updatedetails(GoodReceiptRequest data, string filter)
+        public async Task<GoodReceiptResponse> updatedetailsbyGrnmber(GoodReceiptRequest data, string filter)
         {
             details = new GoodRecipt();
             details = await(from a in dbconnection.GoodRecipt
@@ -82,34 +82,95 @@ namespace Shopping.BLayer.Adapters
             return response;
         }
 
-        public Task<GoodReceiptResponse> updatedetailsbyGrnmber(GoodReceiptRequest data, string filter)
+       
+        public async Task<List<GoodReceiptResponse>> updatecustomernamebyBillnmber(GoodReceiptRequest data, string filter)
         {
-            throw new NotImplementedException();
+            Listdetails = new List<GoodRecipt>();
+            List<GoodReceiptResponse> response = new List<GoodReceiptResponse>();
+            Listdetails = await (from a in dbconnection.GoodRecipt
+                   where a.OwnerdetailUserId == data.OwnerdetailUserId && a.BillNumber == data.BillNumber && a.IsActive == true && a.IsDelete == false
+                   select a).ToListAsync();
+            if(Listdetails.Count() ==0 ) { throw new CustomException("Bill Number is not Valid"); }
+            int i = 0;
+            foreach(GoodRecipt details in Listdetails)
+            {
+                details.CustomerName = data.CustomerName;
+                details.ModifyOn = DateTime.UtcNow;
+                var row = await dbconnection.SaveChangesAsync();
+                response.Add(custommapper.Map<GoodRecipt, GoodReceiptResponse>(details));
+                response[i++].Sucess = row>0;
+            }
+            return response;
         }
 
-        public Task<List<GoodReceiptResponse>> updatecustomernamebyGrnmber(GoodReceiptRequest data, string filter)
+        public async Task<GoodReceiptResponse> getdetailbyGrnumber(int? grnum, long? userid, string filter)
         {
-            throw new NotImplementedException();
+            details = new GoodRecipt();
+            GoodReceiptResponse response = new GoodReceiptResponse();
+            details = await(from a in dbconnection.GoodRecipt
+                                where a.OwnerdetailUserId == userid && a.IsActive == true &&
+                                a.IsDelete == false && a.Grnumber==grnum
+                                select a).FirstOrDefaultAsync() ;
+            if (details == null) { throw new CustomException("User Id is not Valid"); }
+            response=custommapper.Map<GoodRecipt, GoodReceiptResponse>(details);
+
+            return response;
         }
 
-        public Task<GoodReceiptResponse> getdetailbyGrnumber(int? grnum, string filter)
+        public async Task<List<GoodReceiptResponse>> getdetailbyBillnumber(string billnum, long? userid, string filter)
         {
-            throw new NotImplementedException();
+            Listdetails = new List<GoodRecipt>();
+            List<GoodReceiptResponse> response = new List<GoodReceiptResponse>();
+            Listdetails = await(from a in dbconnection.GoodRecipt
+                                where a.OwnerdetailUserId == userid && a.IsActive == true &&
+                                a.IsDelete == false && a.BillNumber==billnum
+                                select a).ToListAsync();
+            if (Listdetails.Count() == 0) { throw new CustomException("User Id is not Valid"); }
+            int i = 0;
+            foreach (GoodRecipt details in Listdetails)
+            {
+                response.Add(custommapper.Map<GoodRecipt, GoodReceiptResponse>(details));
+                response[i++].Sucess =true;
+            }
+
+            return response;
         }
 
-        public Task<List<GoodReceiptResponse>> getdetailbyBillnumber(string billnum, string filter)
+        public async Task<List<GoodReceiptResponse>> getdetailsbyProductid(long? productid, long? userid, string filter)
         {
-            throw new NotImplementedException();
+            Listdetails = new List<GoodRecipt>();
+            List<GoodReceiptResponse> response = new List<GoodReceiptResponse>();
+            Listdetails = await (from a in dbconnection.GoodRecipt
+                                 where a.OwnerdetailUserId == userid && a.IsActive == true && 
+                                 a.IsDelete == false && a.ProductdetailProductId==productid
+                                 select a).ToListAsync(); ;
+            if (Listdetails.Count() == 0) { throw new CustomException("User Id is not Valid"); }
+            int i = 0;
+            foreach (GoodRecipt details in Listdetails)
+            {
+                response.Add(custommapper.Map<GoodRecipt, GoodReceiptResponse>(details));
+                response[i++].Sucess = true;
+            }
+
+            return response;
         }
 
-        public Task<List<GoodReceiptResponse>> getdetailsbyProductid(int? productid, int? userid, string filter)
+        public async Task<List<GoodReceiptResponse>> getdetailsbyUserId(int? userid, string filter)
         {
-            throw new NotImplementedException();
-        }
+            Listdetails = new List<GoodRecipt>();
+            List<GoodReceiptResponse> response = new List<GoodReceiptResponse>();
+            Listdetails = await(from a in dbconnection.GoodRecipt
+                                where a.OwnerdetailUserId == userid && a.IsActive == true && a.IsDelete == false
+                                select a).ToListAsync();
+            if (Listdetails.Count() == 0) { throw new CustomException("User Id is not Valid"); }
+            int i = 0;
+            foreach (GoodRecipt details in Listdetails)
+            {
+                response.Add(custommapper.Map<GoodRecipt, GoodReceiptResponse>(details));
+                response[i++].Sucess = true;
+            }
 
-        public Task<List<GoodReceiptResponse>> getdetailsbyUserId(int? userid, string filter)
-        {
-            throw new NotImplementedException();
+            return response;
         }
     }
 }
