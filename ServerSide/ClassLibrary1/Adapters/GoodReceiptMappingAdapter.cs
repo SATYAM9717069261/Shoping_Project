@@ -36,7 +36,7 @@ namespace Shopping.BLayer.Adapters
             goodReceiptMappings = new List<GoodReceiptMapping>();
 
             goodReceiptMappings= await (from a in dbconnection.GoodReceiptMapping
-                                        where a.UserId == data.UserId && a.IsActive == true && a.IsDelete == false
+                                        where a.OwnerId == data.UserId && a.IsActive == true && a.IsDelete == false
                                         select a).ToListAsync();
             foreach(GoodReceiptMapping goodReceiptMapping in goodReceiptMappings)
             {
@@ -48,10 +48,11 @@ namespace Shopping.BLayer.Adapters
 
             goodReceiptMapping = new GoodReceiptMapping();
             goodReceiptMapping.CreatedOn = DateTime.UtcNow;
+            goodReceiptMapping.ModifyOn = DateTime.UtcNow;
             goodReceiptMapping.header = data.header;
             goodReceiptMapping.IsActive = true;
             goodReceiptMapping.IsDelete = false;
-            goodReceiptMapping.UserId = data.UserId;
+            goodReceiptMapping.OwnerId = data.UserId;
             goodReceiptMapping.logo = data.logo;
             dbconnection.GoodReceiptMapping.Add(goodReceiptMapping);
             var row = await dbconnection.SaveChangesAsync();

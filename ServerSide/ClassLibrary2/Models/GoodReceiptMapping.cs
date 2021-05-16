@@ -8,10 +8,10 @@ namespace Shopping.DataLayer.Models
     public class GoodReceiptMapping
     {
         [Key]
-        public long? mappedid { get; set; }
+        public long? mapid { get; set; }
         public string logo { get; set; }
         public string header { get; set; }
-        public long? UserId { get; set; }
+        public long? OwnerId { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsDelete { get; set; }
         public DateTime? CreatedOn { get; set; }

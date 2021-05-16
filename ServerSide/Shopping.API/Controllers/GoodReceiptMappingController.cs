@@ -52,7 +52,7 @@ namespace Shopping.API.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(ex.Message);
+                return Ok(ex);
             }
         }
     }
