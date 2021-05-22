@@ -18,7 +18,7 @@ import { LoginComponent } from './login/login/login.component'
 import { MdbModule } from 'mdb-angular-ui-kit';
 import { ProductDetailsComponent } from './dashboard/Product/product/Product-detail/product-details/product-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import {ScrollingModule} from '@angular/cdk/scrolling'
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 @NgModule({
