@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { interval } from 'rxjs';
+import { Router } from '@angular/router';
+import { LoaderService } from 'src/app/common/loader/loader.service';
+import { OwnerserviceService } from 'src/app/common/services/ownerservice.service';
 
 @Component({
   selector: 'app-product',
@@ -7,29 +9,22 @@ import { interval } from 'rxjs';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-    const slider=interval(1000);
-    slider.subscribe((d)=>{
-      console.log(d);
-    })
-   }
-  slidedata(){
-    console.log("Sucessfull");
+  number:any={};
+  constructor(public loaderService: LoaderService, private Owner: OwnerserviceService,
+  private router: Router) { 
+    
+    //for(let i=0;i<100;i++){ this.number.push(i);}
+    this.companylist();
   }
 
+  ngOnInit(): void {
+   }
+
+   async companylist(){
+     await this.Owner.getall().subscribe((result) => { 
+       this.number=result;
+       });
+     
+    console.log("Type of ",this.number['title']);
+   }
 }
-
-
-/** 
-  var swiper = new Swiper('.swiper-container', {
-      slidesPerView: 5.2,
-      spaceBetween: 30,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-    });
- */

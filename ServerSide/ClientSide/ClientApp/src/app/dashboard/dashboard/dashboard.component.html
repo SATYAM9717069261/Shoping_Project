@@ -2,7 +2,8 @@
     <nav style="height: 100%;display: flex; position: fixed; z-index: 1;">
         <div class="btn btn-sm btn-dark" style="color: white;">
             <ul style="text-decoration: none;list-style: none;margin-left: -32px;margin-top: 16px;">
-                <li class="sidebar-dropdown" style="cursor: pointer;" (click)="sidemenushow()"> <i class="fas fa-bars"></i></li>
+                <li class="sidebar-dropdown" style="cursor: pointer;" (click)="sidemenushow()"> <i
+                        class="fas fa-bars"></i></li>
                 <hr>
                 <li class="sidebar-dropdown" style="margin-top: 20px;"> <i class="fa fa-tachometer-alt"></i> </li>
                 <hr>
@@ -162,9 +163,9 @@
         </div>
     </nav>
     <!-- sidebar-wrapper  -->
-    <main class="page-content" style="    margin-top: -36px; display: contents;">
-        
-        <div class="container-fluid">
+    <main class="page-content" style="margin-top: -36px;  display: contents;">
+
+        <div class="container-fluid" style="padding-left: 63px;">
             <nav class="navbar navbar-light bg-light justify-content-between">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -172,22 +173,38 @@
                         <li class="breadcrumb-item active" aria-current="page">Library</li>
                     </ol>
                 </nav>
-                <form class="form-inline">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            Category Select
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item">Type1</a>
-                            <a class="dropdown-item">Type2</a>
-                            <a class="dropdown-item">Type3</a>
-                        </div>
+                <div class="form-inline">
+                    <div class="input-group mb-3 ">
+                        <div class="btn-group">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" (click)="showcategory()">{{SelectCategory}}</button>
+
+                        <ul class="dropdown-menu" [style.display]="display">
+                            <cdk-virtual-scroll-viewport itemSize=10 style="height:180px; width: 200px;">
+                            <li *cdkVirtualFor="let num of category" (click)="selectedcategory(num['title'])" >
+                                <button class="dropdown-item">{{num['title']}}</button>
+                            </li>
+                        </cdk-virtual-scroll-viewport>
+                        </ul>
                     </div>
 
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                    <div class="btn-group">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                        #inputsearch (keyup)="showtext(inputsearch.value)" [value]="inputboxdata">
+
+                        <ul class="dropdown-menu" [style.display]="textboxdisplay">
+                            <cdk-virtual-scroll-viewport itemSize=10 style="height:180px; width: 200px;">
+                            <li *cdkVirtualFor="let num of textsearch" (click)="selectedtext(num['title'])">
+                                <button class="dropdown-item">{{num['id']}}</button>
+                            </li>
+                        </cdk-virtual-scroll-viewport>
+                        </ul>
+                        </div>
+
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="searchquery()">Search</button>
+                    </div>
+
+                </div>
             </nav>
             <hr>
 
@@ -199,3 +216,19 @@
     </main>
     <!-- page-content" -->
 </div>
+
+<!--
+    <div class="dropdown">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Select Category</option>
+                            <cdk-virtual-scroll-viewport itemSize=10 style="height:800px">
+                                <option  *cdkVirtualFor="let num of category" value="{{num['id']}}">
+                                    {{num['title']}}
+                                </option>
+                            </cdk-virtual-scroll-viewport>
+                            <option value="1">option1</option>
+                          </select>
+                    </div>
+
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+-->

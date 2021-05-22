@@ -9,7 +9,7 @@ export class OwnerserviceService {
 
   constructor(private http:HttpClient) { }
   getPosts(data:any):Observable<any>{
-      return this.http.get("https://jsonplaceholder.typicode.com/todos/"+data); 
+      return this.http.get("https://jsonplaceholder.typicode.com/todos/1"); 
   }
 
   getall(){

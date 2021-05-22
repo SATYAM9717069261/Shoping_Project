@@ -17,7 +17,8 @@ import { ErrorPageComponent } from './error-page/error-page/error-page.component
 import { LoginComponent } from './login/login/login.component'
 import { MdbModule } from 'mdb-angular-ui-kit';
 import { ProductDetailsComponent } from './dashboard/Product/product/Product-detail/product-details/product-details.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import {ScrollingModule} from '@angular/cdk/scrolling'
 
 
 @NgModule({
@@ -38,7 +39,9 @@ import { ProductDetailsComponent } from './dashboard/Product/product/Product-det
     AppRoutingModule,
     MatProgressBarModule,
     HttpClientModule,
-    MdbModule
+    MdbModule,
+    ReactiveFormsModule,
+    ScrollingModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true}
