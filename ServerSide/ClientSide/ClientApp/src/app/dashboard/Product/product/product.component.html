@@ -1,7 +1,7 @@
 <cdk-virtual-scroll-viewport itemSize=10 style="height:834px">
     <div class="card-group" >
     <div *cdkVirtualFor="let num of number" style=" margin: 10px;">
-        <div class="card border-success mb-3" style="max-width: 18rem; min-width: 18rem;">
+        <div class="card border-success mb-3" style="max-width: 18rem; min-width: 18rem;" (click)="Productdetails(num['id'])">
             <div class="card-header bg-transparent border-success" style="height: 66px;">Product Name: {{num['title']}}</div>
             <div class="card-body text-success" style="height: 134px;">
                 <h5 class="card-title">Success card title</h5>
@@ -16,7 +16,10 @@
     </div>
     </div>
 </cdk-virtual-scroll-viewport>
-
+ <!-- Product details -->
+ <app-product-details [style.display]="product_details_show"></app-product-details>
+ <!-- End Product details-->
+ 
 <!--<div class="cdk-virtual-scroll-data-source-example">
     <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50" class="example-viewport">
       <div *cdkVirtualFor="let item of items" class="example-item">{{item}}</div>

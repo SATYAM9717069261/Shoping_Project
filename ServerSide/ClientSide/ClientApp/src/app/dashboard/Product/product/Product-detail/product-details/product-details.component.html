@@ -5,7 +5,7 @@
         <div class="modal-content" style="height: 862px; overflow: auto; background-color: #313833;">
             <div class="modal-header">
                 <h3 class="modal-title" style="color: white;">Product Name : Product1</h3>
-                <button type="button" style="color: white;" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" style="color: white;" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -55,13 +55,17 @@
                         </div>
 
 
-                        <div class="col-sm-7">
+                        <div class="col-sm-7" style="display: block;height: 666px;overflow: auto;">
                             <div class="card">
 
                                 <nav class="navbar navbar-light bg-light">
                                     <span class="navbar-brand mb-0 h1">Sell / Month</span>
                                     <div class="container">
+                                      <!--  <ngx-charts-bar-vertical [results]="product_data"
+                                        [scheme]='colorScheme'
+                                        >
 
+                                        </ngx-charts-bar-vertical> -->
                                     </div>
                                   </nav>
                                   
@@ -69,7 +73,11 @@
                                   <nav class="navbar navbar-light bg-light">
                                     <span class="navbar-brand mb-0 h1">Profit / Month</span>
                                     <div class="container">
-                                        
+                                  <!--      <ngx-charts-bar-vertical [results]="product_data"
+                                        [scheme]='colorScheme'
+                                        >
+
+                                        </ngx-charts-bar-vertical> -->
                                     </div>
                                   </nav>
 
@@ -81,7 +89,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="close()">Close</button>
             </div>
         </div>
     </div>

@@ -10,6 +10,7 @@ import { OwnerserviceService } from 'src/app/common/services/ownerservice.servic
 })
 export class ProductComponent implements OnInit {
   number:any={};
+  product_details_show="none";
   constructor(public loaderService: LoaderService, private Owner: OwnerserviceService,
   private router: Router) { 
     
@@ -26,5 +27,9 @@ export class ProductComponent implements OnInit {
        });
      
     console.log("Type of ",this.number['title']);
+   }
+   Productdetails(id:Int16Array){
+     console.log("Id Selected=> ",id);
+     this.product_details_show="block";
    }
 }

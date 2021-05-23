@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
   textboxdisplay="";
   inputboxdata="";
   SelectCategory="Select Category";
+  
   constructor(public loaderService: LoaderService, private Owner: OwnerserviceService,
     private router: Router) { this.categoryMenu(); this.searchtext("");}
 
