@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoaderService } from 'src/app/common/loader/loader.service';
 import { OwnerserviceService } from 'src/app/common/services/ownerservice.service';
@@ -19,7 +19,8 @@ export class DashboardComponent implements OnInit {
     'status': 'Active',
     'status_enum': true,
     'notification': 10,
-    'message': 10
+    'message': 10,
+    'products':0
   }
   category: any = {};
   textsearch:any ={};
@@ -30,7 +31,9 @@ export class DashboardComponent implements OnInit {
   SelectCategory="Select Category";
   
   constructor(public loaderService: LoaderService, private Owner: OwnerserviceService,
-    private router: Router) { this.categoryMenu(); this.searchtext("");}
+    private router: Router,private viewContainer:ViewContainerRef,private cfr:ComponentFactoryResolver) { 
+      this.categoryMenu(); this.searchtext("");
+    }
 
   ngOnInit(): void {
     console.log("Deshboad loaded");
@@ -73,6 +76,13 @@ export class DashboardComponent implements OnInit {
     //call here data and show only those data which we want
     console.log("Category selected==> ",this.SelectCategory);
     console.log(" Text Input == >",this.inputboxdata);
+  }
+
+  async showshopping(){
+    console.log("Call Sucess");
+    this.viewContainer.clear();
+    const{StoreComponent}=await import ('../store/store.component');
+    this.viewContainer.createComponent(this.cfr.resolveComponentFactory(StoreComponent));
   }
 }
 

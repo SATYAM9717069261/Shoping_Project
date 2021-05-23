@@ -20,6 +20,7 @@ import { MdbModule } from 'mdb-angular-ui-kit';
 import { ProductDetailsComponent } from './dashboard/Product/product/Product-detail/product-details/product-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { StoreComponent } from './dashboard/store/store.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     TrackingComponent,
     ErrorPageComponent,
     LoginComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    StoreComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -5,9 +5,15 @@
                 <li class="sidebar-dropdown" style="cursor: pointer;" (click)="sidemenushow()"> <i
                         class="fas fa-bars"></i></li>
                 <hr>
-                <li class="sidebar-dropdown" style="margin-top: 20px;"> <i class="fa fa-tachometer-alt"></i> </li>
+                <li class="sidebar-dropdown" style="margin-top: 20px;"> 
+                    <i class="fa fa-tachometer-alt"></i> 
+                </li>
                 <hr>
-                <li class="sidebar-dropdown" style="margin-top: 20px;"> <i class="fa fa-shopping-cart"></i> </li>
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="showshopping()">
+                     <i class="fa fa-shopping-cart"></i>
+                     <span class="badge badge-pill badge-danger"
+                        *ngIf="(defaultdata['products'] > 0)">{{defaultdata['products']}}</span>
+                </li>
                 <hr>
                 <li class="sidebar-dropdown" style="margin-top: 20px;"> <i class="fa fa-gem"></i> </li>
                 <hr>
@@ -108,7 +114,8 @@
                         <a>
                             <i class="fa fa-shopping-cart"></i>
                             <span>E-commerce</span>
-                            <!-- <span class="badge badge-pill badge-danger">3</span> -->
+                            <span class="badge badge-pill badge-danger"
+                            *ngIf="(defaultdata['products'] > 0)">{{defaultdata['products']}}</span>
                         </a>
                     </li>
                     <li class="sidebar-dropdown">
@@ -209,7 +216,7 @@
             <hr>
 
             <!-- Content Show -->
-            <app-product></app-product>
+            <products></products>
             <!-- End Content show-->
             
            
