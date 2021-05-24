@@ -11,5 +11,7 @@ export class StoreComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  numSequence(n: number): Array<number> {
+    return Array(n);
+  }
 }
