@@ -5,38 +5,42 @@
                 <li class="sidebar-dropdown" style="cursor: pointer;" (click)="sidemenushow()"> <i
                         class="fas fa-bars"></i></li>
                 <hr>
-                <li class="sidebar-dropdown" style="margin-top: 20px;"> 
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('productlist')"> 
                     <i class="fa fa-tachometer-alt"></i> 
                 </li>
                 <hr>
-                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="showshopping()">
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('store')">
                      <i class="fa fa-shopping-cart"></i>
                      <span class="badge badge-pill badge-danger"
                         *ngIf="(defaultdata['products'] > 0)">{{defaultdata['products']}}</span>
                 </li>
                 <hr>
-                <li class="sidebar-dropdown" style="margin-top: 20px;"> <i class="fa fa-gem"></i> </li>
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('addProduct')">
+                     <i class="fa fa-gem"></i> 
+                </li>
                 <hr>
-                <li class="sidebar-dropdown" style="margin-top: 20px;"> <i class="fa fa-chart-line"></i> </li>
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('track')">
+                     <i class="fa fa-chart-line"></i> 
+                    </li>
                 <hr>
 
-                <li>
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('status')">
                     <i class="fa fa-bell"></i>
                     <span class="badge badge-pill badge-warning notification"
                         *ngIf="(defaultdata['notification'] > 0)">{{defaultdata['notification']}}</span>
                 </li>
                 <hr>
-                <li>
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('messages')">
                     <i class="fa fa-envelope"></i>
                     <span class="badge badge-pill badge-success notification"
                         *ngIf="(defaultdata['message'] > 0)">{{defaultdata['message']}}</span>
                 </li>
                 <hr>
-                <li>
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('setting')">
                     <i class="fa fa-cog"></i>
                 </li>
                 <hr>
-                <li>
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('logout')">
                     <i class="fa fa-power-off"></i>
                 </li>
 
@@ -216,7 +220,7 @@
             <hr>
 
             <!-- Content Show -->
-            <products></products>
+            <ng-container *ngComponentOutlet="Component" ></ng-container>            
             <!-- End Content show-->
             
            

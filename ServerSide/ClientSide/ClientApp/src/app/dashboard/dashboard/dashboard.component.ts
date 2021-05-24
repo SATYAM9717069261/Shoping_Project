@@ -29,10 +29,11 @@ export class DashboardComponent implements OnInit {
   textboxdisplay="";
   inputboxdata="";
   SelectCategory="Select Category";
+
+  Component:any;  // use for load a component in single page
   
-  constructor(public loaderService: LoaderService, private Owner: OwnerserviceService,
-    private router: Router,private viewContainer:ViewContainerRef,private cfr:ComponentFactoryResolver) { 
-      this.categoryMenu(); this.searchtext("");
+  constructor(public loaderService: LoaderService, private Owner: OwnerserviceService) { 
+      this.categoryMenu(); this.searchtext("");this.loadComponent('productlist');
     }
 
   ngOnInit(): void {
@@ -67,7 +68,6 @@ export class DashboardComponent implements OnInit {
     }else{
       this.textboxdisplay="";
       //call api and search for data and update list     
-
     }
 
   }
@@ -78,11 +78,25 @@ export class DashboardComponent implements OnInit {
     console.log(" Text Input == >",this.inputboxdata);
   }
 
-  async showshopping(){
-    console.log("Call Sucess");
-    this.viewContainer.clear();
-    const{StoreComponent}=await import ('../store/store.component');
-    this.viewContainer.createComponent(this.cfr.resolveComponentFactory(StoreComponent));
+  async loadComponent(data:string){
+    switch(data){
+      case'productlist':  const{ProductComponent}=await import ('../Product/product/product.component');
+                          this.Component=ProductComponent;
+                          break;
+      case'store'      :  const{StoreComponent}=await import ('../store/store.component');
+                          this.Component=StoreComponent;
+                          break;
+      case'addProduct' :  break;
+      case'track'      :  break;
+      case'status'     :  break;
+      case'messages'   :  break;
+      case'setting'    :  const{ConfigurationComponent}=await import('../Configuration/configuration/configuration.component');
+                          this.Component=ConfigurationComponent;
+                          break;
+      case'logout'     :  break;
+      default          :  console.log("Check Input");
+    }
   }
+
 }
 
