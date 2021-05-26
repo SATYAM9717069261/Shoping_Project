@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { DatatransferserviceService} from '../../common/services/datatransferservice.service';
 import { DashboardComponent} from '../dashboard/dashboard.component';
 
@@ -7,7 +7,7 @@ import { DashboardComponent} from '../dashboard/dashboard.component';
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.css']
 })
-export class StoreComponent implements OnInit {
+export class StoreComponent implements  OnInit {
 
   selectedProduct:any;
   count=0;
@@ -34,9 +34,7 @@ export class StoreComponent implements OnInit {
     this.countproduct=this.dashboard.defaultdata['products']; 
     this.selectedProduct=this.datatransfer.getproduct();
     this.totalamount=this.datatransfer.payableamount();
-
-  }
-
+  } 
   expendproductdetails(){ // not working properly
     if(this.productdetailshow==false) { this.productdetailshow=true; 
                                         console.log('Show : => ',this.productdetailshow ); 

@@ -42,7 +42,7 @@
                 </li>
 
                 <!-- Table of Product-->
-                <li class="list-group-item d-flex justify-content-between lh-sm" style="max-height: 453px; overflow-y: auto;">
+                <li *ngIf="productdetailshow == true" class="list-group-item d-flex justify-content-between lh-sm" style="max-height: 360px; overflow-y: auto;">
                     <table class="table">
                         <thead>
                             <tr>
@@ -86,7 +86,7 @@
             <h4 class="mb-3">Product Details </h4>
 
 
-            <div class="card-group" style="max-height: 780px;overflow-y: auto;">
+            <div class="card-group" style="max-height: 750px;overflow-y: auto;">
                 <div style=" margin: 10px;" *ngFor="let n of selectedProduct.values()">
                     <div class="card border-success mb-3" style="max-width: 18rem; min-width: 18rem;">
                         <div class="card-header bg-transparent border-success" style="height: 66px;">

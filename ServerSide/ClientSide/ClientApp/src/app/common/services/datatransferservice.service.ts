@@ -6,7 +6,9 @@ import { Injectable } from '@angular/core';
 export class DatatransferserviceService {
   product_list = new Map<string,any>();
   totalamount:number=0;
-  constructor() { }
+  constructor() { 
+    console.log("Data in Service==>",this.product_list);
+  }
 
   setproduct(id:string,name:string){
    // console.log("Before set ==> ", this.product_list);
@@ -18,7 +20,7 @@ export class DatatransferserviceService {
      }else{
        this.product_list.set(id,{'Product Name':name,'Total Count':1,'Price':id,'id':id});
      }
-     //console.log("After set ==> ", this.product_list);
+     console.log("After set ==> ", this.product_list);
      return 1;
    }
 
@@ -30,14 +32,14 @@ export class DatatransferserviceService {
                                           ,'Price':id,'id':id
                                         });
       if(this.product_list.get(id)['Total Count']==0){this.product_list.delete(id);}
-     //console.log("After Remove ==> ", this.product_list);
+     console.log("After Remove ==> ", this.product_list);
       return 1; // for sucessfully delete
     }
     return 0; // 0 for unsucessfull delete
    }
 
    getproduct(){
-    //console.log("set ==> ", this.product_list);
+     console.log("set ==> ", this.product_list);
      return this.product_list;
    }
    payableamount(){
