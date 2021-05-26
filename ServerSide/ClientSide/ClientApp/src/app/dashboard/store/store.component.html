@@ -2,8 +2,8 @@
     <div class="row g-3">
         <div class="col-md-5 col-lg-4 order-md-last">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-muted">BILL</span>
-                <span class="badge bg-secondary rounded-pill">300</span>
+                <span class="text-muted">BILL Number</span>
+                <span class="text-muted">300</span>
             </h4>
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between lh-sm">
@@ -14,7 +14,7 @@
                 </li>
                 <li class="list-group-item d-flex justify-content-between lh-sm">
                     <div>
-                        <h4 class="my-0">Address</h4>
+                        <h4 class="my-0">Address </h4>
                     </div>
                     <input type="text" class="form-control" placeholder="Customer Name">
                 </li>
@@ -23,15 +23,53 @@
                     <div>
                         <h4 class="my-0">Phone Number</h4>
                     </div>
-                    <input type="text" class="form-control" placeholder="Customer Name">
+                    <input type="text" class="form-control" placeholder="Customer Name" maxlength="10">
                 </li>
 
-                <li class="list-group-item d-flex justify-content-between bg-light">
+                <li class="list-group-item d-flex justify-content-between bg-light btn"
+                    (click)="expendproductdetails()">
                     <div class="text-success">
-                        <h6 class="my-0">Product details</h6>
+                        <h4 class="my-0">Product details</h4>
                     </div>
-                    <span class="text-muted">Arrow</span>
+                    <span class="text-muted" style="animation-duration: 500ms;" [style.animation-name]="rotate">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z" />
+                        </svg>
+                    </span>
+
                 </li>
+
+                <!-- Table of Product-->
+                <li class="list-group-item d-flex justify-content-between lh-sm" style="max-height: 453px; overflow-y: auto;">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">S No.</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let n of selectedProduct.values()">
+                            <tr>
+                                <th scope="row">{{autoincrement()+1}}</th>
+                                <td>{{n['Product Name']}}</td>
+                                <td>{{n['Total Count']}}*{{n['Price']}}</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </li>
+                <!-- End Table of Product-->
+                <!-- Total-->
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h4 class="my-0">Payable Amount</h4>
+                    </div>
+                    <span class="input-group-text">{{totalamount}}</span>
+                </li>
+
             </ul>
 
             <div class="card p-2">
@@ -46,27 +84,29 @@
 
         <div class="col-md-7 col-lg-8">
             <h4 class="mb-3">Product Details </h4>
-            <div class="card-group" style="height: 780px;overflow-y: auto;">
-                <div style=" margin: 10px;" *ngFor="let n of numSequence(10)">
+
+
+            <div class="card-group" style="max-height: 780px;overflow-y: auto;">
+                <div style=" margin: 10px;" *ngFor="let n of selectedProduct.values()">
                     <div class="card border-success mb-3" style="max-width: 18rem; min-width: 18rem;">
-                        <div class="card-header bg-transparent border-success" style="height: 66px; cursor: pointer;">
-                            Product Name
-                            <span class="badge badge-pill badge-danger" style="float: right;">10</span>
+                        <div class="card-header bg-transparent border-success" style="height: 66px;">
+                            {{n['Product Name']}}
+                            <span class="badge badge-pill badge-danger" style="float: right;">{{n['Total Count']}}</span>
                         </div>
                         <div class="card-body text-success" style="height: 134px;">
                             <h5 class="card-title">Success card title</h5>
                             <p class="card-text">Some details about Product </p>
                         </div>
                         <div class="d-flex bd-highlight" style="margin:5px ;">
-                            <div class="p-2 flex-grow-1 bd-highlight">Price:12</div>
-                            <div class="p-2 bd-highlight btn btn-success" style="margin-right: 10px;">Add</div>
-                            <div class="p-2 bd-highlight btn btn-success">Del</div>
+                            <div class="p-2 flex-grow-1 bd-highlight">Price:{{n['Price']}}</div>
+                            <div class="p-2 bd-highlight btn btn-success" style="margin-right: 10px;"(click)="addproduct(n['id'],n['Product Name'])">Add</div>
+                            <div class="p-2 bd-highlight btn btn-success" (click)="delproduct(n['id'],n['Product Name'])">Del</div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
+            
         </div>
     </div>
 </div>

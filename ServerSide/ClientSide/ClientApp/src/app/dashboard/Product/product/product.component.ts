@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { DashboardComponent} from '../../dashboard/dashboard.component';
-import { LoaderService } from 'src/app/common/loader/loader.service';
-import { OwnerserviceService } from 'src/app/common/services/ownerservice.service';
+import { LoaderService } from '../../../common/loader/loader.service';
+import { OwnerserviceService } from '../../../common/services/ownerservice.service';
+import { DatatransferserviceService} from '../../../common/services/datatransferservice.service';
 
 @Component({
   selector: 'products',
@@ -15,11 +16,12 @@ export class ProductComponent implements OnInit {
   product_details_show="none";
   countproduct=0;
   constructor(public loaderService: LoaderService, private Owner: OwnerserviceService,
-    private router: Router, private dashboard:DashboardComponent) { 
+    private router: Router, private dashboard:DashboardComponent, private datatransferservice:DatatransferserviceService ) { 
     this.companylist();
   }
 
   ngOnInit(): void {
+    this.countproduct=this.dashboard.defaultdata['products']; 
    }
 
    async companylist(){
@@ -34,30 +36,11 @@ export class ProductComponent implements OnInit {
      this.product_details_show="block";
    }
    addproduct(id:string,name:string){
-    if(this.product_list.has(id)){
-      this.product_list.set(id,{'Product Name':name,'Total Count': 
-                                          this.product_list.get(id)['Total Count']+1
-                                        });
-     }else{
-       this.product_list.set(id,{'Product Name':name,'Total Count':1});
-     } 
-     this.dashboard.defaultdata['products']=++this.countproduct;
-     console.log("data=> ",this.product_list);
+    if(this.datatransferservice.setproduct(id,name) ==1){ this.dashboard.defaultdata['products']=++this.countproduct;}
    }
 
    delproduct(id:string,name:string){
-    if(this.product_list.has(id)){
-      this.product_list.set(id,{'Product Name':name,'Total Count': 
-                                          this.product_list.get(id)['Total Count']-1
-                                        });
-      this.dashboard.defaultdata['products']=--this.countproduct;
-      if(this.product_list.get(id)['Total Count']==0){this.product_list.delete(id);}
-    }else{
-      console.log("Eror Popup Can't Add Product");
-      
+    if(this.datatransferservice.removeproduct(id,name) ==1){ this.dashboard.defaultdata['products']=--this.countproduct;}
     }
-    
-    console.log("data=> ",this.product_list);
-   }
 
 }
