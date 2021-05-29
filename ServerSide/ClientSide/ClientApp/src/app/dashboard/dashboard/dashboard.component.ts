@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit  } from '@angular/core';
 import { LoaderService } from 'src/app/common/loader/loader.service';
 import { OwnerserviceService } from 'src/app/common/services/ownerservice.service';
 

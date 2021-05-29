@@ -7,24 +7,35 @@
             <span class="nav-link">Account Details</span>
         </li>
     </ul>
+    <button type="button" class="btn btn-warning" (click)="save()">Save Changes</button>
 </nav>
 
 
 <div style="background-color: white;">
     <!-- Bill page Start -->
     <div class="container" style="margin-top: 10px;padding: 10px;"
-        [style.display]="this.defaultpage_setting[0]['Receipt']['Receipt']">
+        [style.display]="defaultpage_setting[0]['Receipt']['Receipt']">
         <div class="row invoice row-printable">
             <div class="col-md-10">
                 <div class="panel panel-default plain" id="dash_0">
 
                     <div class="panel-body p30">
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="invoice-logo"><img width="100"
-                                        src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Invoice logo">
+
+                            <section class="col-lg-6 ">
+                                <div class="invoice-logo logodiv" [style.width]="imageProperty.width" 
+                                    [style.height]="imageProperty.height" (mouseenter)="hoverhandler('upload_show')"
+                                    (mouseleave)="hoverhandler('upload_hide')" (contextmenu)="rightclick($event)">
+                                    <img width="100" class="logo" [src]="imageProperty.imgURL" alt="Invoice logo" 
+                                    [style.display]="imageProperty.display" [style.opacity]="imageProperty.opacity"  >
+                                    <input type="file" #logo class="custom-file-input" id="logo"
+                                        (change)="imageupload(logo.files)">
+                                    <label type="button" style="position: absolute;" for="logo"
+                                        [style.display]="imageLabel" class="btn btn-success btn-lg">Upload Data
+                                    </label>
                                 </div>
-                            </div>
+                            </section>
+
                             <div class="col-lg-6">
                                 <div class="invoice-from">
                                     <ul class="list-unstyled text-right">
@@ -35,6 +46,7 @@
                                     </ul>
                                 </div>
                             </div>
+
                             <div class="col-lg-12">
                                 <div class="invoice-details mt25" style="background-color: #d6d9d7fc;">
                                     <div class="well">
@@ -108,11 +120,12 @@
             </div>
         </div>
     </div>
+
     <!-- End Bill Page-->
 
     <!-- Account Setting Start-->
     <div class="container" style="margin-top: 10px;padding: 10px;"
-        [style.display]="this.defaultpage_setting[0]['Accountdetail']['Accountdetail']">
+        [style.display]="defaultpage_setting[0]['Accountdetail']['Accountdetail']">
         <div class="container light-style flex-grow-1 container-p-y">
             <h4 class="font-weight-bold py-3 mb-4">
                 Account settings
@@ -138,10 +151,10 @@
                         <div class="tab-content">
 
                             <div class="tab-pane fade active show"
-                                [style.display]="this.defaultpage_setting[0]['Accountdetail']['general']">
+                                [style.display]="defaultpage_setting[0]['Accountdetail']['general']">
 
                                 <div class="card-body media align-items-center">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""
                                         class="d-block ui-w-80">
                                     <div class="media-body ml-4">
                                         <label class="btn btn-outline-primary">
@@ -181,7 +194,7 @@
 
                             </div>
                             <div class="tab-pane fade active show"
-                                [style.display]="this.defaultpage_setting[0]['Accountdetail']['pas']">
+                                [style.display]="defaultpage_setting[0]['Accountdetail']['pas']">
                                 <div class="card-body pb-2">
 
                                     <div class="form-group">
@@ -202,7 +215,7 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade active show"
-                                [style.display]="this.defaultpage_setting[0]['Accountdetail']['info']">
+                                [style.display]="defaultpage_setting[0]['Accountdetail']['info']">
                                 <div class="card-body pb-2">
 
                                     <div class="form-group">
@@ -244,7 +257,7 @@
 
                             </div>
                             <div class="tab-pane fade active show"
-                                [style.display]="this.defaultpage_setting[0]['Accountdetail']['social']">
+                                [style.display]="defaultpage_setting[0]['Accountdetail']['social']">
                                 <div class="card-body pb-2">
 
                                     <div class="form-group">
@@ -271,7 +284,7 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade active show"
-                                [style.display]="this.defaultpage_setting[0]['Accountdetail']['notice']">
+                                [style.display]="defaultpage_setting[0]['Accountdetail']['notice']">
                                 <div class="card-body pb-2">
 
                                     <h6 class="mb-4">Message Notification</h6>
@@ -311,16 +324,14 @@
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon3">Minimum Product
                                                 <small>kg</small></span>
-                                            <input type="text" class="form-control" id="basic-url"
-                                                aria-describedby="basic-addon3">
+                                            <input type="text" class="form-control" aria-describedby="basic-addon3">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon3">Minimum Product
                                                 <small>unit</small></span>
-                                            <input type="text" class="form-control" id="basic-url"
-                                                aria-describedby="basic-addon3">
+                                            <input type="text" class="form-control" aria-describedby="basic-addon3">
                                         </div>
                                     </div>
                                 </div>
@@ -339,5 +350,49 @@
         </div>
     </div>
     <!-- End Account Setting-->
-
 </div>
+<!-- right Click Menu-->
+
+<div class="shadow-lg p-3 mb-5 bg-body rounded" style="position: fixed; background-color: white;"
+    [style.display]="rightmenu" [style.left]="menuTopLeftPosition.x" [style.top]="menuTopLeftPosition.y">
+
+    <table class="table ">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Edit</th>
+                <th scope="col">
+                    <button type="button" class="btn-close" style="float: right;" aria-label="Close" (click)="closeimgmenu()"></button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Width </th>
+                <td><input type="range" class="form-range" #imgwidth min="50" max="300" (change)="onchangeImagemenu('width',imgwidth.value)"></td>
+            </tr>
+            <tr>
+                <th scope="row">Height </th>
+                <td><input type="range" #imgheight class="form-range" min="50" max="300" (change)="onchangeImagemenu('height',imgheight.value)"></td>
+            </tr>
+            <tr>
+                <th scope="row">display</th>
+                <td>
+                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false" (click)="displaymenu()" >
+                        {{imageProperty.display}}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" [style.display]="displayMenu">
+                        <li><label class="dropdown-item active" style="cursor: pointer;" (click)="onchangeImagemenu('display','none')" >None</label></li>
+                        <li><label class="dropdown-item active" style="cursor: pointer;" (click)="onchangeImagemenu('display','block')">block</label></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Opacity</th>
+                <td><input type="range" #imgopacity class="form-range" min="0" max="1" step="0.111" (change)="onchangeImagemenu('opacity',imgopacity.value)"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- End Right Click Menu-->
