@@ -23,11 +23,11 @@
                         <div class="row">
 
                             <section class="col-lg-6 ">
-                                <div class="invoice-logo logodiv" [style.width]="imageProperty.width" 
+                                <div class="invoice-logo logodiv" [style.width]="imageProperty.width"
                                     [style.height]="imageProperty.height" (mouseenter)="hoverhandler('upload_show')"
-                                    (mouseleave)="hoverhandler('upload_hide')" (contextmenu)="rightclick($event)">
-                                    <img width="100" class="logo" [src]="imageProperty.imgURL" alt="Invoice logo" 
-                                    [style.display]="imageProperty.display" [style.opacity]="imageProperty.opacity"  >
+                                    (mouseleave)="hoverhandler('upload_hide')" (contextmenu)="rightclick($event,'img')">
+                                    <img width="100" class="logo" [src]="imageProperty.imgURL" alt="Invoice logo"
+                                        [style.display]="imageProperty.display" [style.opacity]="imageProperty.opacity">
                                     <input type="file" #logo class="custom-file-input" id="logo"
                                         (change)="imageupload(logo.files)">
                                     <label type="button" style="position: absolute;" for="logo"
@@ -36,14 +36,13 @@
                                 </div>
                             </section>
 
-                            <div class="col-lg-6">
-                                <div class="invoice-from">
-                                    <ul class="list-unstyled text-right">
-                                        <li>Dash LLC</li>
-                                        <li>2500 Ridgepoint Dr, Suite 105-C</li>
-                                        <li>Austin TX 78754</li>
-                                        <li>VAT Number EU826113958</li>
-                                    </ul>
+                            <div class="col-lg-6" (contextmenu)="rightclick($event,'header')">
+                                <div class="invoice-from" contenteditable="true"
+                                    [style.display]="headerProperty.display" [style.float]="headerProperty.float"
+                                    [style.background-color]="headerProperty.bgcolor"
+                                    [style.color]="headerProperty.color" [style.height]="headerProperty.height"
+                                    [style.width]="headerProperty.width">
+                                    <span [style.font-size]="headerProperty.font">{{headerProperty.text}}</span>
                                 </div>
                             </div>
 
@@ -354,45 +353,131 @@
 <!-- right Click Menu-->
 
 <div class="shadow-lg p-3 mb-5 bg-body rounded" style="position: fixed; background-color: white;"
-    [style.display]="rightmenu" [style.left]="menuTopLeftPosition.x" [style.top]="menuTopLeftPosition.y">
+    [style.display]="AlldisplayMenu.photomenu" [style.left]="menuTopLeftPosition.x" [style.top]="menuTopLeftPosition.y">
 
     <table class="table ">
         <thead class="thead-light">
             <tr>
                 <th scope="col">Edit</th>
                 <th scope="col">
-                    <button type="button" class="btn-close" style="float: right;" aria-label="Close" (click)="closeimgmenu()"></button>
+                    <button type="button" class="btn-close" style="float: right;" aria-label="Close"
+                        (click)="closeimgmenu('img')"></button>
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <th scope="row">Width </th>
-                <td><input type="range" class="form-range" #imgwidth min="50" max="300" (change)="onchangeImagemenu('width',imgwidth.value)"></td>
+                <td><input type="range" class="form-range" #imgwidth min="50" max="300"
+                        (change)="onchangeImagemenu('width',imgwidth.value)"></td>
             </tr>
             <tr>
                 <th scope="row">Height </th>
-                <td><input type="range" #imgheight class="form-range" min="50" max="300" (change)="onchangeImagemenu('height',imgheight.value)"></td>
+                <td><input type="range" #imgheight class="form-range" min="50" max="300"
+                        (change)="onchangeImagemenu('height',imgheight.value)"></td>
             </tr>
             <tr>
                 <th scope="row">display</th>
                 <td>
-                    <button class="btn btn-secondary dropdown-toggle" type="button"
-                        data-bs-toggle="dropdown" aria-expanded="false" (click)="displaymenu()" >
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" (click)="displaymenu('imgdisplay')">
                         {{imageProperty.display}}
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" [style.display]="displayMenu">
-                        <li><label class="dropdown-item active" style="cursor: pointer;" (click)="onchangeImagemenu('display','none')" >None</label></li>
-                        <li><label class="dropdown-item active" style="cursor: pointer;" (click)="onchangeImagemenu('display','block')">block</label></li>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2"
+                        [style.display]="AlldisplayMenu.photomenu_display">
+                        <li><label class="dropdown-item active" style="cursor: pointer;"
+                                (click)="onchangeImagemenu('display','none')">None</label></li>
+                        <li><label class="dropdown-item active" style="cursor: pointer;"
+                                (click)="onchangeImagemenu('display','block')">block</label></li>
                     </ul>
                 </td>
             </tr>
             <tr>
                 <th scope="row">Opacity</th>
-                <td><input type="range" #imgopacity class="form-range" min="0" max="1" step="0.111" (change)="onchangeImagemenu('opacity',imgopacity.value)"></td>
+                <td><input type="range" #imgopacity class="form-range" min="0" max="1" step="0.111"
+                        (change)="onchangeImagemenu('opacity',imgopacity.value)"></td>
             </tr>
         </tbody>
     </table>
 </div>
 
 <!-- End Right Click Menu-->
+
+<!-- Header Edit -->
+<div class="shadow-lg p-3 mb-5 bg-body rounded" style="position: fixed; background-color: white;"
+    [style.display]="AlldisplayMenu.headermenu" [style.left]="menuTopLeftPosition.x"
+    [style.top]="menuTopLeftPosition.y">
+
+    <table class="table ">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Edit</th>
+                <th scope="col">
+                    <button type="button" class="btn-close" style="float: right;" aria-label="Close"
+                        (click)="closeimgmenu('header')"></button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Font Size </th>
+                <td><input type="number" #headerfont class="form-range"
+                        (change)="headeronchange('font',headerfont.value)">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Background Color </th>
+                <td><input type="color" #headerbgcolor class="form-range"
+                        (change)="headeronchange('bgcolor',headerbgcolor.value)"></td>
+            </tr>
+            <tr>
+                <th scope="row">Text Color </th>
+                <td><input type="color" #headercolor class="form-range"
+                        (change)="headeronchange('color',headercolor.value)"></td>
+            </tr>
+            <tr>
+                <th scope="row">Width </th>
+                <td><input type="range" class="form-range" #headerwidth min="50" max="300"
+                        (change)="headeronchange('width',headerwidth.value)"></td>
+            </tr>
+            <tr>
+                <th scope="row">Height </th>
+                <td><input type="range" #headerheight class="form-range" min="50" max="300"
+                        (change)="headeronchange('height',headerheight.value)"></td>
+            </tr>
+            <tr>
+                <th scope="row">display</th>
+                <td>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" (click)="displaymenu('header_display')">
+                        {{headerProperty.display}}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2"
+                        [style.display]="AlldisplayMenu.header_display">
+                        <li><label class="dropdown-item active" style="cursor: pointer;"
+                                (click)="headeronchange('display','none')">None</label></li>
+                        <li><label class="dropdown-item active" style="cursor: pointer;"
+                                (click)="headeronchange('display','block')">block</label></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Float</th>
+                <td>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" (click)="displaymenu('header_float')">
+                        {{headerProperty.float}}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2"
+                        [style.display]="AlldisplayMenu.header_float">
+                        <li><label class="dropdown-item active" style="cursor: pointer;"
+                                (click)="headeronchange('float','right')">Right</label></li>
+                        <li><label class="dropdown-item active" style="cursor: pointer;"
+                                (click)="headeronchange('float','left')">Left</label></li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- End Header Edit -->
