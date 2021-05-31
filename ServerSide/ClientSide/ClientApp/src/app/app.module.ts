@@ -21,6 +21,7 @@ import { ProductDetailsComponent } from './dashboard/Product/product/Product-det
 import { ReactiveFormsModule } from '@angular/forms';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { StoreComponent } from './dashboard/store/store.component';
+import { MailComponent } from './dashboard/mail/mail.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { StoreComponent } from './dashboard/store/store.component';
     LoginComponent,
     ProductDetailsComponent,
     StoreComponent,
+    MailComponent,
   ],
   imports: [
     BrowserAnimationsModule,
