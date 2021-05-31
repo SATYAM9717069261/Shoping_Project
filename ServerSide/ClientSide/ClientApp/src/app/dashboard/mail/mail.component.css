@@ -30,3 +30,6 @@
 .font-light {
     font-weight: 300;
 }
+span{
+    cursor: pointer;
+}

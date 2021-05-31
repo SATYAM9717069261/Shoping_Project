@@ -22,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { StoreComponent } from './dashboard/store/store.component';
 import { MailComponent } from './dashboard/mail/mail.component';
+import { SentComponent } from './dashboard/mail/sent/sent.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { MailComponent } from './dashboard/mail/mail.component';
     ProductDetailsComponent,
     StoreComponent,
     MailComponent,
+    SentComponent,
   ],
   imports: [
     BrowserAnimationsModule,
