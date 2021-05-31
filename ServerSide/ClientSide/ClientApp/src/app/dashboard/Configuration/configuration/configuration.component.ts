@@ -67,7 +67,7 @@ export class ConfigurationComponent implements OnInit {
     float: 'right',
     height: '150px',
     width: '150px',
-    display: 'block'
+    display: 'inline-table'
   }
   displayMenu = 'none';
   constructor() {
@@ -159,7 +159,7 @@ export class ConfigurationComponent implements OnInit {
     }
     this.imageProperty.display = 'block';
   }
-  
+
   rightclick(event: any, data: string) {
     event.preventDefault(); // use for disable default right click menu (System Function)
     this.menuTopLeftPosition.x = event.clientX + 'px';
@@ -214,11 +214,13 @@ export class ConfigurationComponent implements OnInit {
         this.closeimgmenu('header_display');
         console.log('display change', value);
         break;
-      case 'font': this.headerProperty.font = value+'px';
+      case 'font': this.headerProperty.font = value + 'px';
         console.log('Font change', value);
         break;
-      case 'text': this.headerProperty.text = value;
-        console.log('text change', value);
+      case 'text':
+        console.log('Before change', this.headerProperty.text);
+        this.headerProperty.text = this.headerProperty.text + (value + '');
+        console.log('After change', this.headerProperty.text);
         break;
       case 'bgcolor': this.headerProperty.bgcolor = value;
         console.log('bgcolor change', value);

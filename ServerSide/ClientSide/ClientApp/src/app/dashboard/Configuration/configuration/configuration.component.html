@@ -37,8 +37,8 @@
                             </section>
 
                             <div class="col-lg-6" (contextmenu)="rightclick($event,'header')">
-                                <div class="invoice-from" contenteditable="true"
-                                    [style.display]="headerProperty.display" [style.float]="headerProperty.float"
+                                <div class="invoice-from" [style.display]="headerProperty.display"
+                                    [style.float]="headerProperty.float"
                                     [style.background-color]="headerProperty.bgcolor"
                                     [style.color]="headerProperty.color" [style.height]="headerProperty.height"
                                     [style.width]="headerProperty.width">
@@ -420,6 +420,10 @@
         </thead>
         <tbody>
             <tr>
+                <th scope="row">Header Text</th>
+                <td><textarea class="form-control"rows="3" (keyup)="headeronchange('text',$event.key)">{{headerProperty.text}}</textarea></td>
+            </tr>
+            <tr>
                 <th scope="row">Font Size </th>
                 <td><input type="number" #headerfont class="form-range"
                         (change)="headeronchange('font',headerfont.value)">
@@ -457,7 +461,7 @@
                         <li><label class="dropdown-item active" style="cursor: pointer;"
                                 (click)="headeronchange('display','none')">None</label></li>
                         <li><label class="dropdown-item active" style="cursor: pointer;"
-                                (click)="headeronchange('display','block')">block</label></li>
+                                (click)="headeronchange('display','inline-table')">Inline-table</label></li>
                     </ul>
                 </td>
             </tr>
