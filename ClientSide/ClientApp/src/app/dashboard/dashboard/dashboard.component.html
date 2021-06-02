@@ -1,0 +1,247 @@
+<div class="page-wrapper chiller-theme {{toggle_menu}}">
+    <nav style="height: 100%;display: flex; position: fixed; z-index: 1;">
+        <div class="btn btn-sm btn-dark" style="color: white;">
+            <ul style="text-decoration: none;list-style: none;margin-left: -32px;margin-top: 16px;">
+                <li class="sidebar-dropdown" style="cursor: pointer;" (click)="sidemenushow()"> <i
+                        class="fas fa-bars"></i></li>
+                <hr>
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('productlist')"> 
+                    <i class="fa fa-tachometer-alt"></i> 
+                </li>
+                <hr>
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('store')">
+                     <i class="fa fa-shopping-cart"></i>
+                     <span class="badge badge-pill badge-danger"
+                        *ngIf="(defaultdata['products'] > 0)">{{defaultdata['products']}}</span>
+                </li>
+                <hr>
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('addProduct')">
+                     <i class="fa fa-gem"></i> 
+                </li>
+                <hr>
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('track')">
+                     <i class="fa fa-chart-line"></i> 
+                    </li>
+                <hr>
+
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('status')">
+                    <i class="fa fa-bell"></i>
+                    <span class="badge badge-pill badge-warning notification"
+                        *ngIf="(defaultdata['notification'] > 0)">{{defaultdata['notification']}}</span>
+                </li>
+                <hr>
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('messages')">
+                    <i class="fa fa-envelope"></i>
+                    <span class="badge badge-pill badge-success notification"
+                        *ngIf="(defaultdata['message'] > 0)">{{defaultdata['message']}}</span>
+                </li>
+                <hr>
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('setting')">
+                    <i class="fa fa-cog"></i>
+                </li>
+                <hr>
+                <li class="sidebar-dropdown" style="margin-top: 20px;" (click)="loadComponent('logout')">
+                    <i class="fa fa-power-off"></i>
+                </li>
+
+
+            </ul>
+        </div>
+
+    </nav>
+
+    <nav id="sidebar" class="sidebar-wrapper">
+        <div class="sidebar-content">
+            <div class="sidebar-brand" style="float: right;">
+                <div id="close-sidebar" (click)="sidemenudiable()">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="sidebar-header">
+                <div class="user-pic">
+                    <img class="img-responsive img-rounded" [src]="defaultdata['profileimage']" alt="User picture">
+                </div>
+                <div class="user-info">
+                    <span class="user-name">{{defaultdata['username']}}
+                        <strong>{{defaultdata['userlastname']}}</strong>
+                    </span>
+                    <span class="user-role">{{defaultdata['role']}}</span>
+                    <span class="user-status">
+                        <i class="fa fa-circle" [style.color]="defaultdata['status_enum']?'green':'red'"></i>
+                        <span>{{defaultdata['status']}}</span>
+                    </span>
+                </div>
+            </div>
+            <!-- sidebar-header  -->
+            <div class="sidebar-search">
+                <div>
+                    <div class="input-group">
+                        <input type="text" class="form-control search-menu" placeholder="Search...">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- sidebar-search  -->
+            <div class="sidebar-menu">
+                <ul>
+                    <li class="header-menu">
+                        <span>General</span>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a>
+                            <i class="fa fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                        <!--   <span class="badge badge-pill badge-warning">New</span> -->
+
+                        <!--             <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Dashboard 1
+                      <span class="badge badge-pill badge-success">Pro</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">Dashboard 2</a>
+                  </li>
+                  <li>
+                    <a href="#">Dashboard 3</a>
+                  </li>
+                </ul>
+              </div> -->
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a>
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>E-commerce</span>
+                            <span class="badge badge-pill badge-danger"
+                            *ngIf="(defaultdata['products'] > 0)">{{defaultdata['products']}}</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a href="#">
+                            <i class="far fa-gem"></i>
+                            <span>Components</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a>
+                            <i class="fa fa-chart-line"></i>
+                            <span>Charts</span>
+                        </a>
+                    </li>
+                    <!--     <li class="header-menu">
+                        <span>Config</span>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-book"></i>
+                            <span>Bill</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-calendar"></i>
+                            <span>Product</span>
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- sidebar-menu  -->
+        </div>
+        <!-- sidebar-content  -->
+        <div class="sidebar-footer">
+            <a>
+                <i class="fa fa-bell"></i>
+                <span class="badge badge-pill badge-warning notification"
+                    *ngIf="(defaultdata['notification'] > 0)">{{defaultdata['notification']}}</span>
+            </a>
+            <a>
+                <i class="fa fa-envelope"></i>
+                <span class="badge badge-pill badge-success notification"
+                    *ngIf="(defaultdata['message'] > 0)">{{defaultdata['message']}}</span>
+            </a>
+            <a>
+                <i class="fa fa-cog"></i>
+            </a>
+            <a>
+                <i class="fa fa-power-off"></i>
+            </a>
+        </div>
+    </nav>
+    <!-- sidebar-wrapper  -->
+    <main class="page-content" style="margin-top: -36px;  display: contents;">
+
+        <div class="container-fluid" style="padding-left: 63px;">
+            <nav class="navbar navbar-light bg-light justify-content-between">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a>Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Library</li>
+                    </ol>
+                </nav>
+                <div class="form-inline">
+                    <div class="input-group mb-3 ">
+                        <div class="btn-group">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" (click)="showcategory()">{{SelectCategory}}</button>
+
+                        <ul class="dropdown-menu" [style.display]="display">
+                            <cdk-virtual-scroll-viewport itemSize=10 style="height:180px; width: 200px;">
+                            <li *cdkVirtualFor="let num of category" (click)="selectedcategory(num['title'])" >
+                                <button class="dropdown-item">{{num['title']}}</button>
+                            </li>
+                        </cdk-virtual-scroll-viewport>
+                        </ul>
+                    </div>
+
+                    <div class="btn-group">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                        #inputsearch (keyup)="showtext(inputsearch.value)" [value]="inputboxdata">
+
+                        <ul class="dropdown-menu" [style.display]="textboxdisplay">
+                            <cdk-virtual-scroll-viewport itemSize=10 style="height:180px; width: 200px;">
+                            <li *cdkVirtualFor="let num of textsearch" (click)="selectedtext(num['title'])">
+                                <button class="dropdown-item">{{num['id']}}</button>
+                            </li>
+                        </cdk-virtual-scroll-viewport>
+                        </ul>
+                        </div>
+
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="searchquery()">Search</button>
+                    </div>
+
+                </div>
+            </nav>
+            <hr>
+
+            <!-- Content Show -->
+            <ng-container *ngComponentOutlet="Component" ></ng-container>            
+            <!-- End Content show-->
+            
+           
+
+        </div>
+    </main>
+    <!-- page-content" -->
+</div>
+
+<!--
+    <div class="dropdown">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Select Category</option>
+                            <cdk-virtual-scroll-viewport itemSize=10 style="height:800px">
+                                <option  *cdkVirtualFor="let num of category" value="{{num['id']}}">
+                                    {{num['title']}}
+                                </option>
+                            </cdk-virtual-scroll-viewport>
+                            <option value="1">option1</option>
+                          </select>
+                    </div>
+
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+-->

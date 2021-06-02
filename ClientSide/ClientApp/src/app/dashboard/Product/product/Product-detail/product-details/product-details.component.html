@@ -1,0 +1,97 @@
+<!-- Modal -->
+<div class="modal fade" style="display: block; background-color:whitesmoke;" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 900px; top:205px">
+        <div class="modal-content" style="height: 862px; overflow: auto; background-color: #313833;">
+            <div class="modal-header">
+                <h3 class="modal-title" style="color: white;">Product Name : Product1</h3>
+                <button type="button" style="color: white;" class="close" data-dismiss="modal" aria-label="Close"
+                    (click)="close()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-sm-5">
+                            <div class="card" style="width: 18rem;">
+                                <img src="../../../../../../assets/images/user.jpg" class="card-img-top" alt="....">
+                                <div class="card-body">
+                                    <h4 class="card-title">Product Name </h4>
+                                </div>
+                                <ul class="list-group list-group-flush" style="list-style: none;">
+                                    <li>
+                                        <div class="input-group-text" style="display: flow-root;">
+                                            <h3 style="float: left;">Price <small>/ Item</small> </h3>
+                                            <h3 style="float: right;">Rs. 150</h3>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="input-group-text" style="display: flow-root;">
+                                            <h3 style="float: left;">Store </h3>
+                                            <h3 style="float: right;">150 <small>items/kg </small></h3>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="input-group-text" style="display: flow-root;">
+                                            <h3 style="float: left;">Left </h3>
+                                            <h3 style="float: right;">150 <small>items/kg </small></h3>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="input-group-text" style="display: flow-root;">
+                                            <h3 style="float: left;">Selled </h3>
+                                            <h3 style="float: right;">150 <small>items/kg </small></h3>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                                <div class="card-body">
+                                    <a style="float: left; font-size: 21px;color: blue;" class="card-link">Profit: </a>
+                                    <a style="float: right; font-size: 21px;color: blue;" class="card-link">2000$</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-7" style="display: block;height: 666px;overflow: auto;">
+                            <div class="card">
+
+                                <nav class="navbar navbar-light bg-light">
+                                    <span class="navbar-brand mb-0 h1">Sell / Month</span>
+                                    <div class="container">
+                                        <!--  <ngx-charts-bar-vertical [results]="product_data"
+                                        [scheme]='colorScheme'
+                                        >
+
+                                        </ngx-charts-bar-vertical> -->
+                                    </div>
+                                </nav>
+
+                                <!-- As a heading -->
+                                <nav class="navbar navbar-light bg-light">
+                                    <span class="navbar-brand mb-0 h1">Profit / Month</span>
+                                    <div class="container">
+                                        <!--      <ngx-charts-bar-vertical [results]="product_data"
+                                        [scheme]='colorScheme'
+                                        >
+
+                                        </ngx-charts-bar-vertical> -->
+                                    </div>
+                                </nav>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="close()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

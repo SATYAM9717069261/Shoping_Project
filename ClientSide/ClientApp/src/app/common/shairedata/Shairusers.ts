@@ -17,7 +17,7 @@ export class Message{
   }
    */
    
-  constructor(private Owner:OwnerserviceService){}
+  //constructor(private Owner:OwnerserviceService){}
   mapping(apidata:any,response:message){
     response.from=apidata['from'];
   }
