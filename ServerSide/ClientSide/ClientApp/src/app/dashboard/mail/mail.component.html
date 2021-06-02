@@ -69,13 +69,14 @@
                                     </ul>
                                 </div>
                             </div>
+
                             <!-- Mail list-->
                             <div class="table-responsive" style="max-height: 608px;">
                                 <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
                                     <tbody>
                                         <!-- row -->
 
-                                        <tr *ngFor="let item of [].constructor(20)">
+                                        <tr *ngFor="let item of [].constructor(20)" (click)="openmessage(item)">
                                             <!-- label -->
                                             <td class="pl-3">
                                                 <div class="custom-control custom-checkbox">
@@ -140,3 +141,7 @@
         </div>
     </div>
 </div>
+
+<!-- Message Box Load-->
+<ng-container *ngComponentOutlet="messagepopup" ></ng-container>    
+<!-- End Message Box -->
