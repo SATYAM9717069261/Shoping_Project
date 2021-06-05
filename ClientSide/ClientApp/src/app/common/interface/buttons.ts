@@ -12,3 +12,4 @@ export interface mailtop {
      */
     [current:string]:any;
 }
+

@@ -1,11 +1,12 @@
 .outer {
-    max-height: 97% !important;
+    max-height: 100% !important;
     background-color: #928d8d99;
     position: absolute;
-    top: 20px;
+    top: 0px;
     max-width: 96% !important;
     height: 100%;
     width: 98%;
+    z-index: 999;
 }
 .inner{
     height: 80px;

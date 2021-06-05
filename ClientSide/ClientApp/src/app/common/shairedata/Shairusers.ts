@@ -16,13 +16,13 @@ export class Message {
       i['status']=mailstatus.important;
       this.mapmessage.push(i);
     }
-    console.log("data ==> ", this.mapmessage);
+//   return this.mapmessage;
   }
 
   async getmessage(userid: string) {
     this.messagearray = await this.Owner.getmessagedata('1');
     this.mapping(this.messagearray);
-    return this.messagearray;
+    return this.mapmessage;
   }
 
 }
